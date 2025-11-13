@@ -37,3 +37,6 @@ yarn-error.log*
 
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
+
+# Codacy CLI
+.codacy/
