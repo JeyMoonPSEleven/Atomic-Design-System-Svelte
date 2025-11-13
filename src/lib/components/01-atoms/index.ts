@@ -18,6 +18,7 @@ export { Image } from './Image';
 export { Link } from './Link';
 export { Logo } from './Logo';
 export { Progress } from './Progress';
+export { Skeleton } from './Skeleton';
 export { Spinner } from './Spinner';
 export { Text } from './Text';
 export { Video } from './Video';

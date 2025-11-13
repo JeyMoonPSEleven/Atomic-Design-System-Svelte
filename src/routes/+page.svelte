@@ -17,6 +17,7 @@
 		Link,
 		Logo,
 		Progress,
+		Skeleton,
 		Spinner,
 		Text,
 		Video,
@@ -500,6 +501,67 @@
 						<Spinner size="sm" />
 						<Spinner size="md" />
 						<Spinner size="lg" />
+					</div>
+				</div>
+
+				<!-- Skeleton -->
+				<div>
+					<Heading
+						level="h3"
+						class="text-xl font-semibold text-text-default mb-4"
+						>Skeleton</Heading
+					>
+					<div class="space-y-4">
+						<div class="flex gap-4 items-center">
+							<Skeleton variant="text" size="sm" width="w-32" />
+							<Skeleton variant="text" size="md" width="w-48" />
+							<Skeleton variant="text" size="lg" width="w-64" />
+						</div>
+						<div class="flex gap-4 items-center">
+							<Skeleton
+								variant="circular"
+								size="lg"
+								width="w-12"
+								height="h-12"
+							/>
+							<Skeleton
+								variant="rectangular"
+								size="md"
+								width="w-32"
+								height="h-20"
+							/>
+							<Skeleton
+								variant="rounded"
+								size="lg"
+								width="w-48"
+								height="h-24"
+							/>
+						</div>
+						<div class="max-w-md">
+							<Skeleton
+								variant="rectangular"
+								width="w-full"
+								height="h-48"
+							/>
+							<Skeleton
+								variant="text"
+								size="md"
+								width="w-3/4"
+								class="mt-4"
+							/>
+							<Skeleton
+								variant="text"
+								size="sm"
+								width="w-full"
+								class="mt-2"
+							/>
+							<Skeleton
+								variant="text"
+								size="sm"
+								width="w-5/6"
+								class="mt-2"
+							/>
+						</div>
 					</div>
 				</div>
 
