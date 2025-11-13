@@ -49,3 +49,35 @@ globs:
 - **RAZÓN:** Las herramientas de catálogo ralentizan el desarrollo y añaden complejidad innecesaria. La documentación y pruebas se realizan en contexto real dentro de la aplicación.
 - **NO CREAR:** Nunca crear archivos `.story.svelte`, `histoire.config.ts`, ni instalar dependencias relacionadas con Histoire o Storybook.
 
+# Patrón de Importación
+- **JERARQUÍA:** Los componentes solo pueden importar desde niveles atómicos inferiores (ej. Moléculas importan Átomos, Organismos importan Moléculas y Átomos).
+- **IMPORTACIONES ABSOLUTAS:** SIEMPRE usar importaciones absolutas con alias `$lib`: `$lib/components/01-atoms/Button.svelte`
+- **ÍNDICES DE BARRIL:** Usar índices de barril (`$lib/components/01-atoms/index.ts`) para exportar componentes y mantener importaciones limpias.
+
+# Estructura de Componentes
+- **PROPS:** Usar `$props()` desestructurado con valores por defecto: `let { prop = defaultValue }: Props = $props();`
+- **RUNES:** Usar `$state` para estado interno, `$derived` para valores computados, `$effect` para efectos secundarios
+- **EVENTOS:** Usar callback props en lugar de `createEventDispatcher` para átomos/moléculas simples
+- **SLOTS:** Usar tipo `Snippet` de Svelte 5 para tipado de slots: `children: import('svelte').Snippet`
+
+# Tokens de Diseño
+- **ALTOCOST:** NUNCA usar valores literales de color/texto (ej: `text-black`, `bg-red-500`)
+- **USAR:** Tokens semánticos (ej: `text-text-default`, `bg-surface-card`, `border-border-default`)
+- **EXCEPCIÓN:** `currentColor` y valores de Tailwind en `app.css` para definir tokens primitivos
+
+# Accesibilidad (A11y)
+- **ROLES:** Agregar roles ARIA apropiados cuando sea necesario (ej: `role="status"` para loaders)
+- **LABELS:** Usar `aria-label` para elementos sin texto visible
+- **FOCUS:** Usar la utilidad `useFocus()` de `$lib/utils/focus.ts` para gestión de foco programático
+- **TRAP FOCUS:** Usar `trapFocus()` para modales y dropdowns
+- **SCREEN READERS:** Incluir texto oculto con `sr-only` cuando sea necesario
+
+# Testing (Futuro)
+- **ESTRUCTURA:** Los tests deben estar junto a los componentes: `Component.svelte` y `Component.test.ts`
+- **COBERTURA:** Priorizar tests de componentes críticos (formularios, navegación, modales)
+- **HERRAMIENTAS:** Usar Vitest + Testing Library cuando se configure testing
+
+# Performance
+- **CODE SPLITTING:** Considerar importaciones dinámicas para componentes orgánicos pesados
+- **LAZY LOADING:** Usar `onMount` + importación dinámica para componentes que no se necesitan inmediatamente
+
