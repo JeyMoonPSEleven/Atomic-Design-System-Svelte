@@ -1,0 +1,51 @@
+---
+description: Reglas para el Sistema de Diseño SvelteKit + Tailwind v4 + Atomic
+globs: 
+  - src/**/*.svelte
+  - src/**/*.ts
+---
+
+# Principios Clave del Framework
+- Usa Svelte 5 (Runes) para todo el código nuevo.
+- Usa SvelteKit para el enrutamiento y la carga de datos.
+- Todo el código debe usar TypeScript.
+- Usa Tailwind CSS v4 para todos los estilos.
+
+# Svelte 5 (Runes)
+- Estado reactivo: `let count = $state(0);` 
+- Valores derivados: `let doubled = $derived(count * 2);` 
+- Props: `let { children } = $props();` 
+- Props bidireccionales: `let { bindableProp = $bindable() } = $props();` 
+- Efectos secundarios: `$effect(() => {... });` 
+
+# Tailwind CSS (¡CRÍTICO!)
+- **PROHIBICIÓN DE @APPLY:** NUNCA uses la directiva `@apply` dentro de los bloques `<style>` de los componentes Svelte.
+- **PREFERIR CLASES DE UTILIDAD:** Siempre usa clases de utilidad de Tailwind directamente en el marcado HTML.
+- **USAR TOKENS SEMÁNTICOS:** Para estilos, prefiere usar las clases de utilidad generadas por nuestros tokens semánticos (ej. `bg-primary`, `text-text-default`, `border-border-default`) definidos en `src/app.css`.
+- **MODO OSCURO:** El modo oscuro se maneja ÚNICAMENTE a través de la redefinición de tokens semánticos en `src/app.css` bajo la clase `.dark`.
+
+# Arquitectura de Componentes (Patrón CVA)
+- **CVA:** Todos los Átomos y Moléculas que requieran variantes deben usar el patrón `CVA (class-variance-authority)` + `tailwind-merge`.
+- **HELPER CVA:** Utiliza el helper `$lib/utils/cva.ts` para definir variantes.
+- **PROPS:** Los componentes deben aceptar una prop `class` que se fusiona con `twMerge`.
+- **ATRIBUTOS:** Los componentes deben usar `{...rest}` para pasar `$$restProps` al elemento DOM raíz.
+- **COMPOSICIÓN:** Las Moléculas y Organismos deben preferir `slots` sobre `props` para la composición de contenido.
+
+# Estructura de Proyecto (Atomic Design)
+- **ÁTOMOS:** `$lib/components/01-atoms` (Bloques de construcción básicos, ej. Button, Input)
+- **MOLÉCULAS:** `$lib/components/02-molecules` (Composiciones de Átomos, ej. SearchForm)
+- **ORGANISMOS:** `$lib/components/03-organisms` (Secciones de UI, ej. Header, Footer)
+- **PLANTILLAS:** `$lib/components/04-templates` (Estructuras de página, ej. ArticleLayout) 
+- **PÁGINAS:** `src/routes/**/+page.svelte` (Instancias de Plantillas con datos reales)
+- **JERARQUÍA:** Los componentes solo pueden importar desde niveles atómicos inferiores (ej. Moléculas importan Átomos).
+
+# Convenciones de Nombrado
+- **Archivos de Componente:** `PascalCase` (ej. `Button.svelte`, `SearchForm.svelte`) 
+- **Importaciones de Componente:** `PascalCase` (ej. `import SearchForm from...`) 
+- **Variables y Funciones:** `camelCase` 
+
+# Herramientas de Documentación (PROHIBIDAS)
+- **PROHIBICIÓN DE HISTOIRE:** Este proyecto NO utiliza Histoire ni ninguna herramienta de catálogo de componentes (Storybook, etc.). Los componentes se prueban y documentan directamente en las páginas de la aplicación (`src/routes`).
+- **RAZÓN:** Las herramientas de catálogo ralentizan el desarrollo y añaden complejidad innecesaria. La documentación y pruebas se realizan en contexto real dentro de la aplicación.
+- **NO CREAR:** Nunca crear archivos `.story.svelte`, `histoire.config.ts`, ni instalar dependencias relacionadas con Histoire o Storybook.
+

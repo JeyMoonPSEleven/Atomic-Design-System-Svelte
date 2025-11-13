@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "svelte-mcp": {
+      "url": "https://svelte-llm.stanislav.garden/mcp/sse",
+      "headers": {}
+    }
+  }
+}
+
