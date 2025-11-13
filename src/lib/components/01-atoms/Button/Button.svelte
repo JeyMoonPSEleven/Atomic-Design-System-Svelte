@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { cva, type VariantProps, twMerge } from '$lib/utils/cva';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
+	import type { Snippet } from 'svelte';
 
 	// 1. Definir variantes de CVA
 	const buttonVariants = cva(
@@ -33,17 +34,39 @@
 	type Props = VariantProps<typeof buttonVariants> &
 		HTMLButtonAttributes & {
 			class?: string;
-			children: import('svelte').Snippet;
+			children?: Snippet;
+			icon?: Snippet;
+			iconPosition?: 'left' | 'right';
 		};
 
 	// 3. Obtener $props (Svelte 5 Runes)
-	let { intent, size, class: customClass, children, ...rest }: Props = $props();
+	let {
+		intent,
+		size,
+		class: customClass,
+		children,
+		icon,
+		iconPosition = 'left',
+		...rest
+	}: Props = $props();
+
+	const baseClasses = $derived(buttonVariants({ intent, size }));
 </script>
 
 <button
-	class={twMerge(buttonVariants({ intent, size }), customClass)}
+	class={twMerge(baseClasses, customClass)}
 	{...rest}
 >
-	{@render children()}
+	{#if icon && iconPosition === 'left'}
+		<span class="mr-2 flex items-center">{@render icon()}</span>
+	{/if}
+
+	{#if children}
+		{@render children()}
+	{/if}
+
+	{#if icon && iconPosition === 'right'}
+		<span class="ml-2 flex items-center">{@render icon()}</span>
+	{/if}
 </button>
 

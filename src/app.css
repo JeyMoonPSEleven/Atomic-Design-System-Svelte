@@ -7,121 +7,220 @@
 /* 3. Definir los tokens de diseño */
 @theme {
   /* ======================================================================== */
-  /* Nivel 1: TOKENS DE SISTEMA (PRIMITIVOS)                                  */
+  /* Nivel 0: TOKENS DE REFERENCIA (valores "crudos")                         */
   /* ======================================================================== */
-  /* No tocar para temas. Esta es la paleta completa.                         */
+  /* Estos son los valores base que nunca cambian. Se usan para construir     */
+  /* los tokens semánticos.                                                    */
 
-  /* --- Colores Primitivos --- */
-  --color-white: #FFFFFF;
-  --color-black: #000000;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-300: #d1d5db;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  /* --- Colores de Referencia --- */
+  --color-ref-white: #FFFFFF;
+  --color-ref-black: #000000;
+  --color-ref-gray-50: #f9fafb;
+  --color-ref-gray-100: #f3f4f6;
+  --color-ref-gray-200: #e5e7eb;
+  --color-ref-gray-300: #d1d5db;
+  --color-ref-gray-400: #9ca3af;
+  --color-ref-gray-500: #6b7280;
+  --color-ref-gray-600: #4b5563;
+  --color-ref-gray-700: #374151;
+  --color-ref-gray-800: #1f2937;
+  --color-ref-gray-900: #111827;
+  --color-ref-gray-950: #030712;
 
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-red-500: #ef4444;
+  --color-ref-blue-50: #eff6ff;
+  --color-ref-blue-100: #dbeafe;
+  --color-ref-blue-200: #bfdbfe;
+  --color-ref-blue-300: #93c5fd;
+  --color-ref-blue-400: #60a5fa;
+  --color-ref-blue-500: #3b82f6;
+  --color-ref-blue-600: #2563eb;
+  --color-ref-blue-700: #1d4ed8;
+  --color-ref-blue-800: #1e40af;
+  --color-ref-blue-900: #1e3a8a;
+  --color-ref-blue-950: #172554;
 
-  /* --- Espaciado Primitivo --- */
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-4: 1rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
+  --color-ref-red-50: #fef2f2;
+  --color-ref-red-100: #fee2e2;
+  --color-ref-red-200: #fecaca;
+  --color-ref-red-300: #fca5a5;
+  --color-ref-red-400: #f87171;
+  --color-ref-red-500: #ef4444;
+  --color-ref-red-600: #dc2626;
+  --color-ref-red-700: #b91c1c;
+  --color-ref-red-800: #991b1b;
+  --color-ref-red-900: #7f1d1d;
+  --color-ref-red-950: #450a0a;
 
-  /* --- Tipografía Primitiva --- */
-  --font-family-sans: "Inter", "system-ui", sans-serif;
-  --font-family-serif: "Georgia", serif;
+  /* --- Espaciado de Referencia --- */
+  --spacing-ref-4xs: 0.125rem;  /* 2px */
+  --spacing-ref-3xs: 0.25rem;   /* 4px */
+  --spacing-ref-2xs: 0.375rem;  /* 6px */
+  --spacing-ref-xs: 0.5rem;     /* 8px */
+  --spacing-ref-sm: 0.75rem;    /* 12px */
+  --spacing-ref-md: 1rem;       /* 16px */
+  --spacing-ref-lg: 1.5rem;     /* 24px */
+  --spacing-ref-xl: 2rem;       /* 32px */
+  --spacing-ref-2xl: 2.5rem;    /* 40px */
+  --spacing-ref-3xl: 3rem;      /* 48px */
+  --spacing-ref-4xl: 4rem;      /* 64px */
+  --spacing-ref-5xl: 5rem;      /* 80px */
+  --spacing-ref-6xl: 6rem;      /* 96px */
+  --spacing-ref-7xl: 7rem;     /* 112px */
+  --spacing-ref-8xl: 8rem;     /* 128px */
+  --spacing-ref-9xl: 9rem;     /* 144px */
 
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
+  /* --- Radios de Referencia --- */
+  --radius-ref-none: 0;
+  --radius-ref-sm: 0.125rem;   /* 2px */
+  --radius-ref-md: 0.375rem;   /* 6px */
+  --radius-ref-lg: 0.5rem;     /* 8px */
+  --radius-ref-xl: 0.75rem;    /* 12px */
+  --radius-ref-2xl: 1rem;      /* 16px */
+  --radius-ref-3xl: 1.5rem;    /* 24px */
+  --radius-ref-full: 9999px;
 
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  /* --- Tipografía de Referencia --- */
+  --font-family-ref-sans: "Inter", "system-ui", sans-serif;
+  --font-family-ref-serif: "Georgia", serif;
+  --font-family-ref-mono: "Fira Code", "Courier New", monospace;
 
-  /* --- Radios de Borde --- */
-  --radius-sm: 0.125rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-full: 9999px;
+  --font-size-ref-xs: 0.75rem;    /* 12px */
+  --font-size-ref-sm: 0.875rem;   /* 14px */
+  --font-size-ref-base: 1rem;     /* 16px */
+  --font-size-ref-lg: 1.125rem;   /* 18px */
+  --font-size-ref-xl: 1.25rem;    /* 20px */
+  --font-size-ref-2xl: 1.5rem;    /* 24px */
+  --font-size-ref-3xl: 1.875rem;  /* 30px */
+  --font-size-ref-4xl: 2.25rem;   /* 36px */
+  --font-size-ref-5xl: 3rem;      /* 48px */
+  --font-size-ref-6xl: 3.75rem;   /* 60px */
+  --font-size-ref-7xl: 4.5rem;    /* 72px */
+  --font-size-ref-8xl: 6rem;      /* 96px */
+  --font-size-ref-9xl: 8rem;     /* 128px */
+
+  --font-weight-ref-thin: 100;
+  --font-weight-ref-light: 300;
+  --font-weight-ref-normal: 400;
+  --font-weight-ref-medium: 500;
+  --font-weight-ref-semibold: 600;
+  --font-weight-ref-bold: 700;
+  --font-weight-ref-extrabold: 800;
+  --font-weight-ref-black: 900;
 
   /* ======================================================================== */
-  /* Nivel 2: TOKENS SEMÁNTICOS (DE DECISIÓN O ROL)                           */
+  /* Nivel 1: TOKENS SEMÁNTICOS (DE DECISIÓN O ROL)                           */
   /* ======================================================================== */
   /* Estos son los tokens que consumen los componentes (ej. bg-primary).      */
   /* El tema 'light' (claro) se define aquí por defecto.                      */
 
   /* --- Colores Semánticos de Superficie --- */
-  --color-surface-page: var(--color-white);
-  --color-surface-card: var(--color-white);
-  --color-surface-header: var(--color-gray-50);
-  --color-surface-input: var(--color-white);
+  --color-surface-page: var(--color-ref-white);
+  --color-surface-card: var(--color-ref-white);
+  --color-surface-header: var(--color-ref-gray-50);
+  --color-surface-input: var(--color-ref-white);
+  --color-surface-tertiary: var(--color-ref-gray-100);
+  --color-surface-primary-hover: var(--color-ref-blue-600);
 
   /* --- Colores Semánticos de Texto --- */
-  --color-text-default: var(--color-gray-800);
-  --color-text-muted: var(--color-gray-700);
-  --color-text-on-primary: var(--color-white);
-  --color-text-on-danger: var(--color-white);
-  --color-text-danger: var(--color-red-500);
+  --color-text-default: var(--color-ref-gray-800);
+  --color-text-muted: var(--color-ref-gray-700);
+  --color-text-on-primary: var(--color-ref-white);
+  --color-text-on-danger: var(--color-ref-white);
+  --color-text-danger: var(--color-ref-red-500);
 
   /* --- Colores Semánticos de Borde --- */
-  --color-border-default: var(--color-gray-300);
-  --color-border-muted: var(--color-gray-100);
+  --color-border-default: var(--color-ref-gray-300);
+  --color-border-muted: var(--color-ref-gray-100);
 
   /* --- Colores Semánticos de Interacción (Acción) --- */
-  --color-primary: var(--color-blue-500);
-  --color-primary-hover: var(--color-blue-600);
-  --color-danger: var(--color-red-500);
+  --color-primary: var(--color-ref-blue-500);
+  --color-primary-hover: var(--color-ref-blue-600);
+  --color-danger: var(--color-ref-red-500);
   
   /* --- Tokens Semánticos de Tipografía --- */
-  --font-body: var(--font-family-sans);
-  --font-heading: var(--font-family-sans);
-  --font-size-body: var(--text-base);
-  --font-size-h1: var(--text-3xl);
-  --font-size-h2: var(--text-2xl);
-  --font-weight-body: var(--font-weight-normal);
-  --font-weight-heading: var(--font-weight-bold);
+  --font-body: var(--font-family-ref-sans);
+  --font-heading: var(--font-family-ref-sans);
+  --font-size-body: var(--font-size-ref-base);
+  --font-size-h1: var(--font-size-ref-3xl);
+  --font-size-h2: var(--font-size-ref-2xl);
+  --font-weight-body: var(--font-weight-ref-normal);
+  --font-weight-heading: var(--font-weight-ref-bold);
   
   /* --- Tokens Semánticos de Espaciado y Radio --- */
-  --spacing-padding-card: var(--spacing-6);
-  --spacing-margin-container: var(--spacing-8);
-  --radius-button: var(--radius-md);
-  --radius-card: var(--radius-lg);
+  --spacing-padding-card: var(--spacing-ref-lg);
+  --spacing-margin-container: var(--spacing-ref-xl);
+  --spacing-component-sm: var(--spacing-ref-3xs);
+  --spacing-component-md: var(--spacing-ref-xs);
+  --spacing-component-lg: var(--spacing-ref-sm);
+  --radius-button: var(--radius-ref-md);
+  --radius-card: var(--radius-ref-lg);
+  --radius-input: var(--radius-ref-md);
+
+  /* ======================================================================== */
+  /* Nivel 2: TOKENS DE COMPONENTE (alias específicos)                         */
+  /* ======================================================================== */
+  /* Estos son alias específicos para componentes que facilitan el uso.        */
+
+  /* --- Tokens de Button --- */
+  --button-bg-primary: var(--color-primary);
+  --button-text-primary: var(--color-text-on-primary);
+  --button-padding-sm: var(--spacing-ref-3xs) var(--spacing-ref-2xs);
+  --button-padding-md: var(--spacing-ref-xs) var(--spacing-ref-md);
+  --button-padding-lg: var(--spacing-ref-sm) var(--spacing-ref-lg);
+  --button-radius: var(--radius-button);
+
+  /* --- Tokens de Input --- */
+  --input-bg: var(--color-surface-input);
+  --input-text: var(--color-text-default);
+  --input-border: var(--color-border-default);
+  --input-padding: var(--spacing-component-md);
+  --input-radius: var(--radius-input);
+
+  /* --- Tokens de Card --- */
+  --card-bg: var(--color-surface-card);
+  --card-padding: var(--spacing-padding-card);
+  --card-radius: var(--radius-card);
+  --card-border: var(--color-border-muted);
+
+  /* --- Tokens de Icon --- */
+  --icon-size-sm: var(--spacing-ref-md);
+  --icon-size-md: var(--spacing-ref-lg);
+  --icon-size-lg: var(--spacing-ref-xl);
+  --icon-size-xl: var(--spacing-ref-2xl);
+
+  /* --- Tokens de Spacing (utilidades) --- */
+  --spacing-gap-sm: var(--spacing-ref-xs);
+  --spacing-gap-md: var(--spacing-ref-md);
+  --spacing-gap-lg: var(--spacing-ref-xl);
 }
 
 /* ======================================================================== */
 /* 4. REDEFINICIÓN DE TOKENS SEMÁNTICOS PARA DARK MODE                      */
 /* ======================================================================== */
-/* Aquí es donde ocurre la magia. Solo redefinimos los tokens de Nivel 2.  */
+/* Aquí es donde ocurre la magia. Solo redefinimos los tokens de Nivel 1.   */
+/* Los tokens de Nivel 0 (referencia) y Nivel 2 (componente) NO cambian.    */
 @layer base {
   .dark {
     /* --- Colores Semánticos de Superficie (Dark) --- */
-    --color-surface-page: var(--color-gray-900);
-    --color-surface-card: var(--color-gray-800);
-    --color-surface-header: var(--color-gray-900);
-    --color-surface-input: var(--color-gray-800);
+    --color-surface-page: var(--color-ref-gray-900);
+    --color-surface-card: var(--color-ref-gray-800);
+    --color-surface-header: var(--color-ref-gray-900);
+    --color-surface-input: var(--color-ref-gray-800);
+    --color-surface-tertiary: var(--color-ref-gray-700);
+    --color-surface-primary-hover: var(--color-ref-blue-600);
 
     /* --- Colores Semánticos de Texto (Dark) --- */
-    --color-text-default: var(--color-gray-100);
-    --color-text-muted: var(--color-gray-300);
-    --color-text-on-primary: var(--color-white);
+    --color-text-default: var(--color-ref-gray-100);
+    --color-text-muted: var(--color-ref-gray-300);
+    --color-text-on-primary: var(--color-ref-white);
     
     /* --- Colores Semánticos de Borde (Dark) --- */
-    --color-border-default: var(--color-gray-700);
-    --color-border-muted: var(--color-gray-800);
+    --color-border-default: var(--color-ref-gray-700);
+    --color-border-muted: var(--color-ref-gray-800);
     
     /* Los colores de interacción pueden o no cambiar */
-    --color-primary: var(--color-blue-500);
-    --color-primary-hover: var(--color-blue-600);
+    --color-primary: var(--color-ref-blue-500);
+    --color-primary-hover: var(--color-ref-blue-600);
   }
 }
 
