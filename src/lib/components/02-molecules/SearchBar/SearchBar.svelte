@@ -8,7 +8,7 @@
 		onsubmit?: (value: string) => void;
 	};
 
-	let { class: customClass, placeholder = 'Buscar...', value = $bindable(''), onsubmit }: Props = $props();
+	let { class: customClass, placeholder = 'Buscar...', value = $bindable(), onsubmit }: Props = $props();
 </script>
 
 <form
