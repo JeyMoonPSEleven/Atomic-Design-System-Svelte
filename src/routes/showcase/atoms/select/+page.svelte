@@ -73,52 +73,6 @@
 		}
 	];
 
-	{#snippet defaultOptions()}
-		<option value="">Selecciona una opción</option>
-		<option value="1">Opción 1</option>
-		<option value="2">Opción 2</option>
-	{/snippet}
-
-	{#snippet defaultVariant()}
-		<Select>{@render defaultOptions()}</Select>
-	{/snippet}
-
-	{#snippet errorOptions()}
-		<option value="">Selecciona una opción</option>
-		<option value="1">Opción 1</option>
-	{/snippet}
-
-	{#snippet errorVariant()}
-		<Select variant="error">{@render errorOptions()}</Select>
-	{/snippet}
-
-	{#snippet smallOptions()}
-		<option value="">Small</option>
-		<option value="1">Opción</option>
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Select size="sm">{@render smallOptions()}</Select>
-	{/snippet}
-
-	{#snippet mediumOptions()}
-		<option value="">Medium</option>
-		<option value="1">Opción</option>
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Select size="md">{@render mediumOptions()}</Select>
-	{/snippet}
-
-	{#snippet largeOptions()}
-		<option value="">Large</option>
-		<option value="1">Opción</option>
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Select size="lg">{@render largeOptions()}</Select>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: errorVariant },
@@ -127,55 +81,11 @@
 		{ ...variants[4], component: largeVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(2)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Formulario de Selección</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
-					<div>
-						<Text class="mb-2 block">País</Text>
-						{#snippet countryOptions()}
-							<option value="">Selecciona un país</option>
-							<option value="es">España</option>
-							<option value="mx">México</option>
-							<option value="ar">Argentina</option>
-						{/snippet}
-						<Select bind:value={selectValue1}>{@render countryOptions()}</Select>
-					</div>
-					<div>
-						<Text class="mb-2 block">Ciudad</Text>
-						{#snippet cityOptions()}
-							<option value="">Selecciona una ciudad</option>
-							<option value="madrid">Madrid</option>
-							<option value="barcelona">Barcelona</option>
-						{/snippet}
-						<Select bind:value={selectValue2} variant={selectValue1 ? 'default' : 'error'}>{@render cityOptions()}</Select>
-					</div>
-					<Text class="text-sm text-text-muted">Seleccionado: {selectValue1 || 'Ninguno'}</Text>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Select } from '$lib/components/01-atoms';
   
   let value = $state('');
-</script>
+<\/script>
 
 <Select>
   <option value="">Selecciona una opción</option>
@@ -191,6 +101,96 @@
 <Select size="md">...</Select>
 <Select size="lg">...</Select>`;
 </script>
+
+{#snippet defaultOptions()}
+	<option value="">Selecciona una opción</option>
+	<option value="1">Opción 1</option>
+	<option value="2">Opción 2</option>
+{/snippet}
+
+{#snippet defaultVariant()}
+	<Select>{@render defaultOptions()}</Select>
+{/snippet}
+
+{#snippet errorOptions()}
+	<option value="">Selecciona una opción</option>
+	<option value="1">Opción 1</option>
+{/snippet}
+
+{#snippet errorVariant()}
+	<Select variant="error">{@render errorOptions()}</Select>
+{/snippet}
+
+{#snippet smallOptions()}
+	<option value="">Small</option>
+	<option value="1">Opción</option>
+{/snippet}
+
+{#snippet smallVariant()}
+	<Select size="sm">{@render smallOptions()}</Select>
+{/snippet}
+
+{#snippet mediumOptions()}
+	<option value="">Medium</option>
+	<option value="1">Opción</option>
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Select size="md">{@render mediumOptions()}</Select>
+{/snippet}
+
+{#snippet largeOptions()}
+	<option value="">Large</option>
+	<option value="1">Opción</option>
+{/snippet}
+
+{#snippet largeVariant()}
+	<Select size="lg">{@render largeOptions()}</Select>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(2)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Formulario de Selección</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
+				<div>
+					<Text class="mb-2 block">País</Text>
+					{#snippet countryOptions()}
+						<option value="">Selecciona un país</option>
+						<option value="es">España</option>
+						<option value="mx">México</option>
+						<option value="ar">Argentina</option>
+					{/snippet}
+					<Select bind:value={selectValue1}>{@render countryOptions()}</Select>
+				</div>
+				<div>
+					<Text class="mb-2 block">Ciudad</Text>
+					{#snippet cityOptions()}
+						<option value="">Selecciona una ciudad</option>
+						<option value="madrid">Madrid</option>
+						<option value="barcelona">Barcelona</option>
+					{/snippet}
+					<Select bind:value={selectValue2} variant={selectValue1 ? 'default' : 'error'}>{@render cityOptions()}</Select>
+				</div>
+				<Text class="text-sm text-text-muted">Seleccionado: {selectValue1 || 'Ninguno'}</Text>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

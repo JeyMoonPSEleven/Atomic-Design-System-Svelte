@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { SearchForm } from '$lib/components/02-molecules';
 	import { Input, Button } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -17,7 +17,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'children',
 			type: 'Snippet',
@@ -48,36 +48,54 @@
 		}
 	];
 
-	{#snippet defaultInput()}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withCustomButtonVariant }
+	];
+
+	const codeExample = `<script lang="ts">
+  import { SearchForm } from '$lib/components/02-molecules';
+  import { Input, Button } from '$lib/components/01-atoms';
+  
+  {#snippet customButton()}
+    <Button intent="primary">Buscar</Button>
+  {/snippet}
+<\/script>
+
+<SearchForm>
+  <Input type="search" placeholder="Buscar..." />
+</SearchForm>
+
+<SearchForm button={customButton}>
+  <Input type="search" placeholder="Buscar..." />
+</SearchForm>`;
+</script>
+
+{#snippet defaultInput()}
 		<Input type="search" placeholder="Buscar componentes..." />
 	{/snippet}
 
-	{#snippet defaultVariant()}
+{#snippet defaultVariant()}
 		<SearchForm>
 			{@render defaultInput()}
 		</SearchForm>
 	{/snippet}
 
-	{#snippet customInput()}
+{#snippet customInput()}
 		<Input type="search" placeholder="Buscar..." />
 	{/snippet}
 
-	{#snippet customButton()}
+{#snippet customButton()}
 		<Button intent="primary" size="sm">🔍</Button>
 	{/snippet}
 
-	{#snippet withCustomButtonVariant()}
+{#snippet withCustomButtonVariant()}
 		<SearchForm button={customButton}>
 			{@render customInput()}
 		</SearchForm>
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withCustomButtonVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -86,7 +104,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Formulario de Búsqueda</h4>
@@ -101,24 +119,6 @@
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { SearchForm } from '$lib/components/02-molecules';
-  import { Input, Button } from '$lib/components/01-atoms';
-  
-  {#snippet customButton()}
-    <Button intent="primary">Buscar</Button>
-  {/snippet}
-</script>
-
-<SearchForm>
-  <Input type="search" placeholder="Buscar..." />
-</SearchForm>
-
-<SearchForm button={customButton}>
-  <Input type="search" placeholder="Buscar..." />
-</SearchForm>`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -139,4 +139,3 @@
 		{examples}
 	/>
 </div>
-

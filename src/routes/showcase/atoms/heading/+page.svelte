@@ -60,30 +60,6 @@
 		}
 	];
 
-	{#snippet h1Variant()}
-		<Heading level="h1">Título H1</Heading>
-	{/snippet}
-
-	{#snippet h2Variant()}
-		<Heading level="h2">Título H2</Heading>
-	{/snippet}
-
-	{#snippet h3Variant()}
-		<Heading level="h3">Título H3</Heading>
-	{/snippet}
-
-	{#snippet h4Variant()}
-		<Heading level="h4">Título H4</Heading>
-	{/snippet}
-
-	{#snippet h5Variant()}
-		<Heading level="h5">Título H5</Heading>
-	{/snippet}
-
-	{#snippet h6Variant()}
-		<Heading level="h6">Título H6</Heading>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: h1Variant },
 		{ ...variants[1], component: h2Variant },
@@ -93,32 +69,9 @@
 		{ ...variants[5], component: h6Variant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Niveles</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Estructura de Documento</h4>
-				<div class="max-w-2xl p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
-					<Heading level="h1">Título Principal</Heading>
-					<Heading level="h2">Sección Principal</Heading>
-					<Heading level="h3">Subsección</Heading>
-					<Heading level="h4">Apartado</Heading>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Heading } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Heading level="h1">Título Principal</Heading>
 <Heading level="h2">Sección</Heading>
@@ -127,6 +80,53 @@
 <Heading level="h5">Subapartado</Heading>
 <Heading level="h6">Detalle</Heading>`;
 </script>
+
+{#snippet h1Variant()}
+	<Heading level="h1">Título H1</Heading>
+{/snippet}
+
+{#snippet h2Variant()}
+	<Heading level="h2">Título H2</Heading>
+{/snippet}
+
+{#snippet h3Variant()}
+	<Heading level="h3">Título H3</Heading>
+{/snippet}
+
+{#snippet h4Variant()}
+	<Heading level="h4">Título H4</Heading>
+{/snippet}
+
+{#snippet h5Variant()}
+	<Heading level="h5">Título H5</Heading>
+{/snippet}
+
+{#snippet h6Variant()}
+	<Heading level="h6">Título H6</Heading>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Niveles</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Estructura de Documento</h4>
+			<div class="max-w-2xl p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
+				<Heading level="h1">Título Principal</Heading>
+				<Heading level="h2">Sección Principal</Heading>
+				<Heading level="h3">Subsección</Heading>
+				<Heading level="h4">Apartado</Heading>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

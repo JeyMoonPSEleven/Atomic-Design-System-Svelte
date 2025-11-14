@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Rating } from '$lib/components/02-molecules';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let ratingValue1 = $state(3);
-	let ratingValue2 = $state(0);
+let ratingValue1 = $state(3);
 
-	const variants = [
+let ratingValue2 = $state(0);
+
+const variants = [
 		{
 			title: 'Default (5 stars)',
 			component: () => {},
@@ -25,7 +26,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'value',
 			type: 'number',
@@ -63,25 +64,34 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Rating bind:value={ratingValue1} />
-	{/snippet}
+let value = $state(3);
 
-	{#snippet customMaxVariant()}
-		<Rating max={10} bind:value={ratingValue2} />
-	{/snippet}
-
-	{#snippet readonlyVariant()}
-		<Rating value={4} readonly />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: customMaxVariant },
 		{ ...variants[2], component: readonlyVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Rating } from '$lib/components/02-molecules';
+  
+  let value = $state(3);
+<\/script>
+
+<Rating bind:value={value} />
+<Rating max={10} bind:value={value} />
+<Rating value={4} readonly />`;
+</script>
+
+{#snippet customMaxVariant()}
+		<Rating max={10} bind:value={ratingValue2} />
+	{/snippet}
+
+{#snippet readonlyVariant()}
+		<Rating value={4} readonly />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -90,7 +100,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Calificación de Producto</h4>
@@ -109,16 +119,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Rating } from '$lib/components/02-molecules';
-  
-  let value = $state(3);
-</script>
-
-<Rating bind:value={value} />
-<Rating max={10} bind:value={value} />
-<Rating value={4} readonly />`;
-</script>
+{#snippet defaultVariant()}
+	<Rating bind:value={ratingValue1} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -139,4 +142,3 @@
 		{examples}
 	/>
 </div>
-

@@ -63,46 +63,6 @@
 		}
 	];
 
-	{#snippet infoContent()}
-		<Text>Este es un mensaje informativo.</Text>
-	{/snippet}
-
-	{#snippet infoVariant()}
-		<Alert variant="info" title="Información">{@render infoContent()}</Alert>
-	{/snippet}
-
-	{#snippet successContent()}
-		<Text>Operación completada exitosamente.</Text>
-	{/snippet}
-
-	{#snippet successVariant()}
-		<Alert variant="success" title="Éxito">{@render successContent()}</Alert>
-	{/snippet}
-
-	{#snippet warningContent()}
-		<Text>Ten cuidado con esta acción.</Text>
-	{/snippet}
-
-	{#snippet warningVariant()}
-		<Alert variant="warning" title="Advertencia">{@render warningContent()}</Alert>
-	{/snippet}
-
-	{#snippet dangerContent()}
-		<Text>Ha ocurrido un error.</Text>
-	{/snippet}
-
-	{#snippet dangerVariant()}
-		<Alert variant="danger" title="Error">{@render dangerContent()}</Alert>
-	{/snippet}
-
-	{#snippet withoutTitleContent()}
-		<Text>Mensaje sin título</Text>
-	{/snippet}
-
-	{#snippet withoutTitleVariant()}
-		<Alert variant="info">{@render withoutTitleContent()}</Alert>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: infoVariant },
 		{ ...variants[1], component: successVariant },
@@ -111,38 +71,10 @@
 		{ ...variants[4], component: withoutTitleVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Uso en Formulario</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
-					{#snippet formSuccess()}
-						<Text>Tu formulario se ha enviado correctamente.</Text>
-					{/snippet}
-					<Alert variant="success" title="Éxito">{@render formSuccess()}</Alert>
-
-					{#snippet formError()}
-						<Text>Por favor, completa todos los campos requeridos.</Text>
-					{/snippet}
-					<Alert variant="danger" title="Error">{@render formError()}</Alert>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Alert } from '$lib/components/02-molecules';
   import { Text } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Alert variant="info" title="Información">
   <Text>Este es un mensaje informativo.</Text>
@@ -160,6 +92,74 @@
   <Text>Ha ocurrido un error.</Text>
 </Alert>`;
 </script>
+
+{#snippet infoContent()}
+	<Text>Este es un mensaje informativo.</Text>
+{/snippet}
+
+{#snippet infoVariant()}
+	<Alert variant="info" title="Información">{@render infoContent()}</Alert>
+{/snippet}
+
+{#snippet successContent()}
+	<Text>Operación completada exitosamente.</Text>
+{/snippet}
+
+{#snippet successVariant()}
+	<Alert variant="success" title="Éxito">{@render successContent()}</Alert>
+{/snippet}
+
+{#snippet warningContent()}
+	<Text>Ten cuidado con esta acción.</Text>
+{/snippet}
+
+{#snippet warningVariant()}
+	<Alert variant="warning" title="Advertencia">{@render warningContent()}</Alert>
+{/snippet}
+
+{#snippet dangerContent()}
+	<Text>Ha ocurrido un error.</Text>
+{/snippet}
+
+{#snippet dangerVariant()}
+	<Alert variant="danger" title="Error">{@render dangerContent()}</Alert>
+{/snippet}
+
+{#snippet withoutTitleContent()}
+	<Text>Mensaje sin título</Text>
+{/snippet}
+
+{#snippet withoutTitleVariant()}
+	<Alert variant="info">{@render withoutTitleContent()}</Alert>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Uso en Formulario</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
+				{#snippet formSuccess()}
+					<Text>Tu formulario se ha enviado correctamente.</Text>
+				{/snippet}
+				<Alert variant="success" title="Éxito">{@render formSuccess()}</Alert>
+
+				{#snippet formError()}
+					<Text>Por favor, completa todos los campos requeridos.</Text>
+				{/snippet}
+				<Alert variant="danger" title="Error">{@render formError()}</Alert>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

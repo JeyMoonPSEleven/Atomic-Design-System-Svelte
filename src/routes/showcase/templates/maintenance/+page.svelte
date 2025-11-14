@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Maintenance } from '$lib/components/04-templates';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -16,7 +16,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'message',
 			type: 'string',
@@ -33,51 +33,52 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<div class="border border-border-default rounded-lg overflow-hidden h-64">
-			<Maintenance />
-		</div>
-	{/snippet}
-
-	{#snippet withMessageVariant()}
-		<div class="border border-border-default rounded-lg overflow-hidden h-64">
-			<Maintenance message="Sitio en mantenimiento. Estaremos de vuelta pronto." />
-		</div>
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withMessageVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Página de Mantenimiento</h4>
-				<div class="border border-border-default rounded-lg overflow-hidden bg-surface-card h-96">
-					<Maintenance message="Estamos realizando mejoras. Volveremos pronto." />
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Maintenance } from '$lib/components/04-templates';
-</script>
+<\/script>
 
 <Maintenance />
 
 <Maintenance message="Sitio en mantenimiento. Estaremos de vuelta pronto." />`;
 </script>
+
+{#snippet defaultVariant()}
+	<div class="border border-border-default rounded-lg overflow-hidden h-64">
+		<Maintenance />
+	</div>
+{/snippet}
+
+{#snippet withMessageVariant()}
+	<div class="border border-border-default rounded-lg overflow-hidden h-64">
+		<Maintenance message="Sitio en mantenimiento. Estaremos de vuelta pronto." />
+	</div>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Página de Mantenimiento</h4>
+			<div class="border border-border-default rounded-lg overflow-hidden bg-surface-card h-96">
+				<Maintenance message="Estamos realizando mejoras. Volveremos pronto." />
+			</div>
+		</div>
+	</div>
+{/snippet}
+
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -98,4 +99,3 @@
 		{examples}
 	/>
 </div>
-

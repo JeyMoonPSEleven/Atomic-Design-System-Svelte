@@ -43,22 +43,6 @@
 		}
 	];
 
-	{#snippet smallVariant()}
-		<Spinner size="sm" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Spinner size="md" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Spinner size="lg" />
-	{/snippet}
-
-	{#snippet xlVariant()}
-		<Spinner size="xl" />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: smallVariant },
 		{ ...variants[1], component: mediumVariant },
@@ -66,45 +50,61 @@
 		{ ...variants[3], component: xlVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Estados de Carga</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
-					<div class="flex items-center gap-3">
-						<Spinner size="sm" />
-						<span class="text-text-default">Cargando datos...</span>
-					</div>
-					<div class="flex items-center gap-3">
-						<Spinner size="md" />
-						<span class="text-text-default">Procesando...</span>
-					</div>
-					<div class="flex items-center justify-center py-8">
-						<Spinner size="lg" />
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Spinner } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Spinner size="sm" />
 <Spinner size="md" />
 <Spinner size="lg" />
 <Spinner size="xl" />`;
 </script>
+
+{#snippet smallVariant()}
+	<Spinner size="sm" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Spinner size="md" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Spinner size="lg" />
+{/snippet}
+
+{#snippet xlVariant()}
+	<Spinner size="xl" />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Estados de Carga</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
+				<div class="flex items-center gap-3">
+					<Spinner size="sm" />
+					<span class="text-text-default">Cargando datos...</span>
+				</div>
+				<div class="flex items-center gap-3">
+					<Spinner size="md" />
+					<span class="text-text-default">Procesando...</span>
+				</div>
+				<div class="flex items-center justify-center py-8">
+					<Spinner size="lg" />
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

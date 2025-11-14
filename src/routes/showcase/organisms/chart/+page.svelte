@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Chart } from '$lib/components/03-organisms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const chartData = [
+const chartData = [
 		{ label: 'Ene', value: 20 },
 		{ label: 'Feb', value: 35 },
 		{ label: 'Mar', value: 15 },
 		{ label: 'Abr', value: 40 }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Bar Chart',
 			component: () => {},
@@ -23,7 +23,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'type',
 			type: "'bar' | 'line' | 'pie'",
@@ -47,20 +47,35 @@
 		}
 	];
 
-	{#snippet barVariant()}
-		<Chart type="bar" data={chartData} />
-	{/snippet}
-
-	{#snippet lineVariant()}
-		<Chart type="line" data={chartData} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: barVariant },
 		{ ...variants[1], component: lineVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Chart } from '$lib/components/03-organisms';
+  
+  const data = [
+    { label: 'Ene', value: 20 },
+    { label: 'Feb', value: 35 },
+    { label: 'Mar', value: 15 }
+  ];
+<\/script>
+
+<Chart type="bar" data={[
+  { label: 'Ene', value: 20 },
+  { label: 'Feb', value: 35 },
+  { label: 'Mar', value: 15 }
+]} />
+
+<Chart type="line" data={data} />`;
+</script>
+
+{#snippet lineVariant()}
+		<Chart type="line" data={chartData} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Tipos de Gráfico</h3>
@@ -69,7 +84,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Dashboard de Gráficos</h4>
@@ -81,18 +96,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Chart } from '$lib/components/03-organisms';
-</script>
-
-<Chart type="bar" data={[
-  { label: 'Ene', value: 20 },
-  { label: 'Feb', value: 35 },
-  { label: 'Mar', value: 15 }
-]} />
-
-<Chart type="line" data={data} />`;
-</script>
+{#snippet barVariant()}
+	<Chart type="bar" data={chartData} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -113,4 +119,3 @@
 		{examples}
 	/>
 </div>
-

@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Notifications } from '$lib/components/03-organisms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const notifications = [
+const notifications = [
 		{ id: '1', message: 'Notificación informativa', variant: 'info' as const },
 		{ id: '2', message: 'Operación exitosa', variant: 'success' as const },
 		{ id: '3', message: 'Advertencia importante', variant: 'warning' as const }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -22,7 +22,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'notifications',
 			type: 'Notification[]',
@@ -46,20 +46,35 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Notifications notifications={notifications} />
-	{/snippet}
-
-	{#snippet withCloseVariant()}
-		<Notifications notifications={notifications} onclose={(id) => console.log('Cerrar:', id)} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withCloseVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Notifications } from '$lib/components/03-organisms';
+  
+  const notifications = [
+    { id: '1', message: 'Notificación informativa', variant: 'info' },
+    { id: '2', message: 'Operación exitosa', variant: 'success' },
+    { id: '3', message: 'Advertencia importante', variant: 'warning' }
+  ];
+<\/script>
+
+<Notifications notifications={[
+  { id: '1', message: 'Notificación informativa', variant: 'info' },
+  { id: '2', message: 'Operación exitosa', variant: 'success' },
+  { id: '3', message: 'Advertencia importante', variant: 'warning' }
+]} />
+
+<Notifications notifications={notifications} onclose={(id) => console.log('Cerrar:', id)} />`;
+</script>
+
+{#snippet withCloseVariant()}
+		<Notifications notifications={notifications} onclose={(id) => console.log('Cerrar:', id)} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -68,7 +83,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Sistema de Notificaciones</h4>
@@ -79,18 +94,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Notifications } from '$lib/components/03-organisms';
-</script>
-
-<Notifications notifications={[
-  { id: '1', message: 'Notificación informativa', variant: 'info' },
-  { id: '2', message: 'Operación exitosa', variant: 'success' },
-  { id: '3', message: 'Advertencia importante', variant: 'warning' }
-]} />
-
-<Notifications notifications={notifications} onclose={(id) => console.log('Cerrar:', id)} />`;
-</script>
+{#snippet defaultVariant()}
+	<Notifications notifications={notifications} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -111,4 +117,3 @@
 		{examples}
 	/>
 </div>
-

@@ -74,30 +74,6 @@
 		}
 	];
 
-	{#snippet withImageVariant()}
-		<Avatar src="https://i.pravatar.cc/150?img=1" alt="Avatar" />
-	{/snippet}
-
-	{#snippet withInitialsVariant()}
-		<Avatar initials="JD" />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Avatar size="sm" initials="JD" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Avatar size="md" initials="JD" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Avatar size="lg" initials="JD" />
-	{/snippet}
-
-	{#snippet xlVariant()}
-		<Avatar size="xl" initials="JD" />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: withImageVariant },
 		{ ...variants[1], component: withInitialsVariant },
@@ -107,51 +83,9 @@
 		{ ...variants[5], component: xlVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tipos</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(2)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Lista de Usuarios</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="space-y-3">
-						<div class="flex items-center gap-3">
-							<Avatar src="https://i.pravatar.cc/150?img=1" alt="Usuario 1" />
-							<div>
-								<div class="font-medium text-text-default">Juan Pérez</div>
-								<div class="text-sm text-text-muted">juan@example.com</div>
-							</div>
-						</div>
-						<div class="flex items-center gap-3">
-							<Avatar initials="MP" />
-							<div>
-								<div class="font-medium text-text-default">María García</div>
-								<div class="text-sm text-text-muted">maria@example.com</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-</script>
-
-<script>
 	const codeExample = `<script lang="ts">
   import { Avatar } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Avatar src="https://example.com/avatar.jpg" alt="Avatar" />
 <Avatar initials="JD" />
@@ -161,6 +95,70 @@
 <Avatar size="lg" initials="JD" />
 <Avatar size="xl" initials="JD" />`;
 </script>
+
+{#snippet withImageVariant()}
+	<Avatar src="https://i.pravatar.cc/150?img=1" alt="Avatar" />
+{/snippet}
+
+{#snippet withInitialsVariant()}
+	<Avatar initials="JD" />
+{/snippet}
+
+{#snippet smallVariant()}
+	<Avatar size="sm" initials="JD" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Avatar size="md" initials="JD" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Avatar size="lg" initials="JD" />
+{/snippet}
+
+{#snippet xlVariant()}
+	<Avatar size="xl" initials="JD" />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tipos</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(2)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Lista de Usuarios</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="space-y-3">
+					<div class="flex items-center gap-3">
+						<Avatar src="https://i.pravatar.cc/150?img=1" alt="Usuario 1" />
+						<div>
+							<div class="font-medium text-text-default">Juan Pérez</div>
+							<div class="text-sm text-text-muted">juan@example.com</div>
+						</div>
+					</div>
+					<div class="flex items-center gap-3">
+						<Avatar initials="MP" />
+						<div>
+							<div class="font-medium text-text-default">María García</div>
+							<div class="text-sm text-text-muted">maria@example.com</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

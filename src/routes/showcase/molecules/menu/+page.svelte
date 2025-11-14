@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Menu } from '$lib/components/02-molecules';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const menuItems = [
+const menuItems = [
 		{ label: 'Item 1', href: '#' },
 		{ label: 'Item 2', onclick: () => console.log('Item 2') },
 		{ label: 'Divider', divider: true },
 		{ label: 'Item 3', href: '#' }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -23,7 +23,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'items',
 			type: 'MenuItem[]',
@@ -40,31 +40,39 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Menu items={menuItems} />
-	{/snippet}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withIconsVariant }
+	];
 
-	{#snippet icon1()}
+	const codeExample = `<script lang="ts">
+  import { Menu } from '$lib/components/02-molecules';
+<\/script>
+
+<Menu items={[
+  { label: 'Item 1', href: '#' },
+  { label: 'Item 2', onclick: () => console.log('Item 2') },
+  { label: 'Divider', divider: true },
+  { label: 'Item 3', href: '#' }
+]} />`;
+</script>
+
+{#snippet icon1()}
 		<span>📝</span>
 	{/snippet}
 
-	{#snippet icon2()}
+{#snippet icon2()}
 		<span>🗑️</span>
 	{/snippet}
 
-	{#snippet withIconsVariant()}
+{#snippet withIconsVariant()}
 		<Menu items={[
 			{ label: 'Editar', href: '#', icon: icon1 },
 			{ label: 'Eliminar', onclick: () => console.log('Eliminar'), icon: icon2 }
 		]} />
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withIconsVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -73,7 +81,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Menú de Navegación</h4>
@@ -90,17 +98,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Menu } from '$lib/components/02-molecules';
-</script>
-
-<Menu items={[
-  { label: 'Item 1', href: '#' },
-  { label: 'Item 2', onclick: () => console.log('Item 2') },
-  { label: 'Divider', divider: true },
-  { label: 'Item 3', href: '#' }
-]} />`;
-</script>
+{#snippet defaultVariant()}
+	<Menu items={menuItems} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -121,4 +121,3 @@
 		{examples}
 	/>
 </div>
-

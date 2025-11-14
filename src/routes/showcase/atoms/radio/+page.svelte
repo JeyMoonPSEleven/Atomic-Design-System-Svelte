@@ -66,26 +66,6 @@
 		}
 	];
 
-	{#snippet unselectedVariant()}
-		<Radio group={radioGroup} value="option1" />
-	{/snippet}
-
-	{#snippet selectedVariant()}
-		<Radio group={radioGroup} value="option2" />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Radio size="sm" group={radioGroup2} value="option1" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Radio size="md" group={radioGroup2} value="option2" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Radio size="lg" group={radioGroup2} value="option3" />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: unselectedVariant },
 		{ ...variants[1], component: selectedVariant },
@@ -94,50 +74,11 @@
 		{ ...variants[4], component: largeVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(2)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Selección de Opción</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="space-y-2">
-						<label class="flex items-center gap-2">
-							<Radio group={radioGroup} value="opcion1" />
-							<Text>Opción 1</Text>
-						</label>
-						<label class="flex items-center gap-2">
-							<Radio group={radioGroup} value="opcion2" />
-							<Text>Opción 2</Text>
-						</label>
-						<label class="flex items-center gap-2">
-							<Radio group={radioGroup} value="opcion3" />
-							<Text>Opción 3</Text>
-						</label>
-						<Text class="text-sm text-text-muted mt-2">Seleccionado: {radioGroup || 'Ninguno'}</Text>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Radio } from '$lib/components/01-atoms';
   
   let group = $state('');
-</script>
+<\/script>
 
 <Radio group={group} value="option1" />
 <Radio group={group} value="option2" />
@@ -146,6 +87,65 @@
 <Radio size="md" group={group} value="option2" />
 <Radio size="lg" group={group} value="option3" />`;
 </script>
+
+{#snippet unselectedVariant()}
+	<Radio group={radioGroup} value="option1" />
+{/snippet}
+
+{#snippet selectedVariant()}
+	<Radio group={radioGroup} value="option2" />
+{/snippet}
+
+{#snippet smallVariant()}
+	<Radio size="sm" group={radioGroup2} value="option1" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Radio size="md" group={radioGroup2} value="option2" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Radio size="lg" group={radioGroup2} value="option3" />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(2)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Selección de Opción</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="space-y-2">
+					<label class="flex items-center gap-2">
+						<Radio group={radioGroup} value="opcion1" />
+						<Text>Opción 1</Text>
+					</label>
+					<label class="flex items-center gap-2">
+						<Radio group={radioGroup} value="opcion2" />
+						<Text>Opción 2</Text>
+					</label>
+					<label class="flex items-center gap-2">
+						<Radio group={radioGroup} value="opcion3" />
+						<Text>Opción 3</Text>
+					</label>
+					<Text class="text-sm text-text-muted mt-2">Seleccionado: {radioGroup || 'Ninguno'}</Text>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

@@ -1,24 +1,11 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Form } from '$lib/components/03-organisms';
 	import { Field } from '$lib/components/02-molecules';
 	import { Input, Button } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	{#snippet formFields()}
-		<Field label="Nombre">
-			<Input placeholder="Tu nombre" />
-		</Field>
-		<Field label="Email">
-			<Input type="email" placeholder="tu@email.com" />
-		</Field>
-		<Field label="Mensaje">
-			<Input placeholder="Tu mensaje" />
-		</Field>
-		<Button intent="primary" type="submit">Enviar</Button>
-	{/snippet}
-
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -31,7 +18,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'children',
 			type: 'Snippet',
@@ -55,27 +42,66 @@
 		}
 	];
 
-	{#snippet defaultFields()}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withSubmitVariant }
+	];
+
+	const codeExample = `<script lang="ts">
+  import { Form } from '$lib/components/03-organisms';
+  import { Field } from '$lib/components/02-molecules';
+  import { Input, Button } from '$lib/components/01-atoms';
+  
+  {#snippet fields()}
+    <Field label="Nombre">
+      <Input placeholder="Tu nombre" />
+    </Field>
+    <Button intent="primary" type="submit">Enviar</Button>
+  {/snippet}
+<\/script>
+
+<Form onsubmit={(e) => {
+  e.preventDefault();
+  console.log('Formulario enviado');
+}}>
+  {@render fields()}
+</Form>`;
+</script>
+
+{#snippet formFields()}
+		<Field label="Nombre">
+			<Input placeholder="Tu nombre" />
+		</Field>
+		<Field label="Email">
+			<Input type="email" placeholder="tu@email.com" />
+		</Field>
+		<Field label="Mensaje">
+			<Input placeholder="Tu mensaje" />
+		</Field>
+		<Button intent="primary" type="submit">Enviar</Button>
+	{/snippet}
+
+{#snippet defaultFields()}
 		<Field label="Nombre">
 			<Input placeholder="Tu nombre" />
 		</Field>
 		<Button intent="primary" type="submit">Enviar</Button>
 	{/snippet}
 
-	{#snippet defaultVariant()}
+{#snippet defaultVariant()}
 		<Form>
 			{@render defaultFields()}
 		</Form>
 	{/snippet}
 
-	{#snippet withSubmitFields()}
+{#snippet withSubmitFields()}
 		<Field label="Email">
 			<Input type="email" placeholder="tu@email.com" />
 		</Field>
 		<Button intent="primary" type="submit">Enviar</Button>
 	{/snippet}
 
-	{#snippet withSubmitVariant()}
+{#snippet withSubmitVariant()}
 		<Form onsubmit={(e) => {
 			e.preventDefault();
 			console.log('Formulario enviado');
@@ -84,12 +110,7 @@
 		</Form>
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withSubmitVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -98,7 +119,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Formulario Completo</h4>
@@ -113,27 +134,6 @@
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { Form } from '$lib/components/03-organisms';
-  import { Field } from '$lib/components/02-molecules';
-  import { Input, Button } from '$lib/components/01-atoms';
-  
-  {#snippet fields()}
-    <Field label="Nombre">
-      <Input placeholder="Tu nombre" />
-    </Field>
-    <Button intent="primary" type="submit">Enviar</Button>
-  {/snippet}
-</script>
-
-<Form onsubmit={(e) => {
-  e.preventDefault();
-  console.log('Formulario enviado');
-}}>
-  {@render fields()}
-</Form>`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -154,4 +154,3 @@
 		{examples}
 	/>
 </div>
-

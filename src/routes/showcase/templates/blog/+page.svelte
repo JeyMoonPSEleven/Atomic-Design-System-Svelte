@@ -1,33 +1,10 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Blog } from '$lib/components/04-templates';
 	import { Link, Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	{#snippet logo()}
-		<a href="/" class="text-xl font-bold text-text-default">Blog</a>
-	{/snippet}
-
-	{#snippet navigation()}
-		<nav class="flex gap-4">
-			<Link href="/">Inicio</Link>
-			<Link href="/posts">Posts</Link>
-		</nav>
-	{/snippet}
-
-	{#snippet sidebar()}
-		<Text>Sidebar del blog</Text>
-	{/snippet}
-
-	{#snippet content()}
-		<Text>Contenido del blog</Text>
-	{/snippet}
-
-	{#snippet footer()}
-		<Text>© 2024</Text>
-	{/snippet}
-
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -40,7 +17,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'logo',
 			type: 'Snippet',
@@ -78,69 +55,38 @@
 		}
 	];
 
-	{#snippet exampleLogo()}
-		<a href="/" class="text-xl font-bold text-text-default">Blog</a>
-	{/snippet}
-
-	{#snippet exampleNav()}
-		<nav class="flex gap-4">
-			<Link href="/">Inicio</Link>
-		</nav>
-	{/snippet}
-
-	{#snippet exampleContent()}
-		<Text>Contenido del blog</Text>
-	{/snippet}
-
-	{#snippet exampleFooter()}
-		<Text>© 2024</Text>
-	{/snippet}
-
-	{#snippet defaultVariant()}
-		<div class="border border-border-default rounded-lg overflow-hidden h-64">
-			<Blog logo={exampleLogo} navigation={exampleNav} children={exampleContent} footer={exampleFooter} />
-		</div>
-	{/snippet}
-
-	{#snippet exampleSidebar()}
-		<Text>Sidebar</Text>
-	{/snippet}
-
-	{#snippet withSidebarVariant()}
-		<div class="border border-border-default rounded-lg overflow-hidden h-64">
-			<Blog logo={exampleLogo} navigation={exampleNav} sidebar={exampleSidebar} children={exampleContent} footer={exampleFooter} />
-		</div>
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withSidebarVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Layout de Blog</h4>
-				<div class="border border-border-default rounded-lg overflow-hidden bg-surface-card h-96">
-					<Blog logo={logo} navigation={navigation} sidebar={sidebar} children={content} footer={footer} />
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Blog } from '$lib/components/04-templates';
   import { Link, Text } from '$lib/components/01-atoms';
-</script>
+  
+  {#snippet logo()}
+    <a href="/" class="text-xl font-bold text-text-default">Blog</a>
+  {/snippet}
+
+  {#snippet navigation()}
+    <nav class="flex gap-4">
+      <Link href="/">Inicio</Link>
+      <Link href="/posts">Posts</Link>
+    </nav>
+  {/snippet}
+
+  {#snippet sidebar()}
+    <Text>Sidebar del blog</Text>
+  {/snippet}
+
+  {#snippet content()}
+    <Text>Contenido del blog</Text>
+  {/snippet}
+
+  {#snippet footer()}
+    <Text>© 2024</Text>
+  {/snippet}
+<\/script>
 
 <Blog 
   logo={logo} 
@@ -150,6 +96,84 @@
   footer={footer} 
 />`;
 </script>
+
+{#snippet logo()}
+	<a href="/" class="text-xl font-bold text-text-default">Blog</a>
+{/snippet}
+
+{#snippet navigation()}
+	<nav class="flex gap-4">
+		<Link href="/">Inicio</Link>
+		<Link href="/posts">Posts</Link>
+	</nav>
+{/snippet}
+
+{#snippet sidebar()}
+	<Text>Sidebar del blog</Text>
+{/snippet}
+
+{#snippet content()}
+	<Text>Contenido del blog</Text>
+{/snippet}
+
+{#snippet footer()}
+	<Text>© 2024</Text>
+{/snippet}
+
+{#snippet exampleLogo()}
+	<a href="/" class="text-xl font-bold text-text-default">Blog</a>
+{/snippet}
+
+{#snippet exampleNav()}
+	<nav class="flex gap-4">
+		<Link href="/">Inicio</Link>
+	</nav>
+{/snippet}
+
+{#snippet exampleContent()}
+	<Text>Contenido del blog</Text>
+{/snippet}
+
+{#snippet exampleFooter()}
+	<Text>© 2024</Text>
+{/snippet}
+
+{#snippet defaultVariant()}
+	<div class="border border-border-default rounded-lg overflow-hidden h-64">
+		<Blog logo={exampleLogo} navigation={exampleNav} children={exampleContent} footer={exampleFooter} />
+	</div>
+{/snippet}
+
+{#snippet exampleSidebar()}
+	<Text>Sidebar</Text>
+{/snippet}
+
+{#snippet withSidebarVariant()}
+	<div class="border border-border-default rounded-lg overflow-hidden h-64">
+		<Blog logo={exampleLogo} navigation={exampleNav} sidebar={exampleSidebar} children={exampleContent} footer={exampleFooter} />
+	</div>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Layout de Blog</h4>
+			<div class="border border-border-default rounded-lg overflow-hidden bg-surface-card h-96">
+				<Blog logo={logo} navigation={navigation} sidebar={sidebar} children={content} footer={footer} />
+			</div>
+		</div>
+	</div>
+{/snippet}
+
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -170,4 +194,3 @@
 		{examples}
 	/>
 </div>
-

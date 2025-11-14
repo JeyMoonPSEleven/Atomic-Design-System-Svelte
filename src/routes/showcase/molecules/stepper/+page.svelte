@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Stepper } from '$lib/components/02-molecules';
 	import { Button } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let stepperStep1 = $state(0);
-	let stepperStep2 = $state(2);
+let stepperStep1 = $state(0);
 
-	const variants = [
+let stepperStep2 = $state(2);
+
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -20,7 +21,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'steps',
 			type: 'Step[]',
@@ -44,15 +45,27 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Stepper steps={[
-			{ label: 'Paso 1' },
-			{ label: 'Paso 2' },
-			{ label: 'Paso 3' }
-		]} currentStep={stepperStep1} />
-	{/snippet}
+let currentStep = $state(0);
 
-	{#snippet withCompletedVariant()}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withCompletedVariant }
+	];
+
+	const codeExample = `<script lang="ts">
+  import { Stepper } from '$lib/components/02-molecules';
+  
+  let currentStep = $state(1);
+<\/script>
+
+<Stepper steps={[
+  { label: 'Paso 1', completed: currentStep > 0 },
+  { label: 'Paso 2', completed: currentStep > 1 },
+  { label: 'Paso 3' }
+]} currentStep={currentStep} />`;
+</script>
+
+{#snippet withCompletedVariant()}
 		<Stepper steps={[
 			{ label: 'Paso 1', completed: true },
 			{ label: 'Paso 2', completed: true },
@@ -61,12 +74,7 @@
 		]} currentStep={stepperStep2} />
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withCompletedVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -75,7 +83,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Proceso Multi-Paso</h4>
@@ -99,18 +107,13 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Stepper } from '$lib/components/02-molecules';
-  
-  let currentStep = $state(0);
-</script>
-
-<Stepper steps={[
-  { label: 'Paso 1', completed: currentStep > 0 },
-  { label: 'Paso 2', completed: currentStep > 1 },
-  { label: 'Paso 3' }
-]} currentStep={currentStep} />`;
-</script>
+{#snippet defaultVariant()}
+	<Stepper steps={[
+		{ label: 'Paso 1' },
+		{ label: 'Paso 2' },
+		{ label: 'Paso 3' }
+	]} currentStep={stepperStep1} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -131,4 +134,3 @@
 		{examples}
 	/>
 </div>
-

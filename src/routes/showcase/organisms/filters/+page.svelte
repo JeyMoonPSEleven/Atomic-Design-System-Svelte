@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Filters } from '$lib/components/03-organisms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const filterFields = [
+const filterFields = [
 		{ label: 'Nombre', type: 'text' as const },
 		{
 			label: 'Categoría',
@@ -17,7 +17,7 @@
 		{ label: 'Fecha', type: 'date' as const }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -30,7 +30,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'fields',
 			type: 'FilterField[]',
@@ -61,50 +61,14 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Filters fields={filterFields} />
-	{/snippet}
-
-	{#snippet withHandlersVariant()}
-		<Filters
-			fields={filterFields}
-			onchange={(filters) => console.log('Filtros:', filters)}
-			onreset={() => console.log('Reset')}
-		/>
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withHandlersVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Filtros de Búsqueda</h4>
-				<div class="max-w-2xl p-6 border border-border-default rounded-lg bg-surface-card">
-					<Filters
-						fields={filterFields}
-						onchange={(filters) => console.log('Filtros:', filters)}
-						onreset={() => console.log('Reset')}
-					/>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Filters } from '$lib/components/03-organisms';
-</script>
+<\/script>
 
 <Filters fields={[
   { label: 'Nombre', type: 'text' },
@@ -119,6 +83,42 @@
   { label: 'Fecha', type: 'date' }
 ]} onchange={(filters) => console.log(filters)} onreset={() => {}} />`;
 </script>
+
+{#snippet withHandlersVariant()}
+		<Filters
+			fields={filterFields}
+			onchange={(filters) => console.log('Filtros:', filters)}
+			onreset={() => console.log('Reset')}
+		/>
+	{/snippet}
+
+{#snippet preview()}
+		<div class="space-y-8">
+			<section>
+				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+				<VariantsGrid variants={variantsWithComponents} />
+			</section>
+		</div>
+	{/snippet}
+
+{#snippet examples()}
+		<div class="space-y-6">
+			<div>
+				<h4 class="font-semibold mb-3 text-text-default">Filtros de Búsqueda</h4>
+				<div class="max-w-2xl p-6 border border-border-default rounded-lg bg-surface-card">
+					<Filters
+						fields={filterFields}
+						onchange={(filters) => console.log('Filtros:', filters)}
+						onreset={() => console.log('Reset')}
+					/>
+				</div>
+			</div>
+		</div>
+	{/snippet}
+
+{#snippet defaultVariant()}
+	<Filters fields={filterFields} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -139,4 +139,3 @@
 		{examples}
 	/>
 </div>
-

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Timeline } from '$lib/components/02-molecules';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const timelineItems = [
+const timelineItems = [
 		{
 			title: 'Evento 1',
 			description: 'Descripción del evento 1',
@@ -21,7 +21,7 @@
 		}
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -34,7 +34,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'items',
 			type: 'TimelineItem[]',
@@ -51,23 +51,37 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Timeline items={timelineItems} />
-	{/snippet}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withoutDatesVariant }
+	];
 
-	{#snippet withoutDatesVariant()}
+	const codeExample = `<script lang="ts">
+  import { Timeline } from '$lib/components/02-molecules';
+<\/script>
+
+<Timeline items={[
+  {
+    title: 'Evento 1',
+    description: 'Descripción del evento 1',
+    date: '2024-01-01'
+  },
+  {
+    title: 'Evento 2',
+    description: 'Descripción del evento 2',
+    date: '2024-02-01'
+  }
+]} />`;
+</script>
+
+{#snippet withoutDatesVariant()}
 		<Timeline items={[
 			{ title: 'Evento 1', description: 'Descripción 1' },
 			{ title: 'Evento 2', description: 'Descripción 2' }
 		]} />
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withoutDatesVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -76,7 +90,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Historial de Eventos</h4>
@@ -103,23 +117,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Timeline } from '$lib/components/02-molecules';
-</script>
-
-<Timeline items={[
-  {
-    title: 'Evento 1',
-    description: 'Descripción del evento 1',
-    date: '2024-01-01'
-  },
-  {
-    title: 'Evento 2',
-    description: 'Descripción del evento 2',
-    date: '2024-02-01'
-  }
-]} />`;
-</script>
+{#snippet defaultVariant()}
+	<Timeline items={timelineItems} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -140,4 +140,3 @@
 		{examples}
 	/>
 </div>
-

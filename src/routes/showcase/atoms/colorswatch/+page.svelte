@@ -65,34 +65,6 @@
 		}
 	];
 
-	{#snippet primaryVariant()}
-		<ColorSwatch color="#3b82f6" />
-	{/snippet}
-
-	{#snippet dangerVariant()}
-		<ColorSwatch color="#ef4444" />
-	{/snippet}
-
-	{#snippet successVariant()}
-		<ColorSwatch color="#10b981" />
-	{/snippet}
-
-	{#snippet warningVariant()}
-		<ColorSwatch color="#f59e0b" />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<ColorSwatch size="sm" color="#3b82f6" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<ColorSwatch size="md" color="#3b82f6" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<ColorSwatch size="lg" color="#3b82f6" />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: primaryVariant },
 		{ ...variants[1], component: dangerVariant },
@@ -103,51 +75,9 @@
 		{ ...variants[6], component: largeVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Colores</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 4)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(4)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Paleta de Colores</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="flex gap-4 items-center">
-						<div class="flex flex-col items-center gap-2">
-							<ColorSwatch color="#3b82f6" />
-							<Text class="text-xs">Primary</Text>
-						</div>
-						<div class="flex flex-col items-center gap-2">
-							<ColorSwatch color="#ef4444" />
-							<Text class="text-xs">Danger</Text>
-						</div>
-						<div class="flex flex-col items-center gap-2">
-							<ColorSwatch color="#10b981" />
-							<Text class="text-xs">Success</Text>
-						</div>
-						<div class="flex flex-col items-center gap-2">
-							<ColorSwatch color="#f59e0b" />
-							<Text class="text-xs">Warning</Text>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { ColorSwatch } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <ColorSwatch color="#3b82f6" />
 <ColorSwatch color="#ef4444" />
@@ -158,6 +88,76 @@
 <ColorSwatch size="md" color="#3b82f6" />
 <ColorSwatch size="lg" color="#3b82f6" />`;
 </script>
+
+{#snippet primaryVariant()}
+	<ColorSwatch color="#3b82f6" />
+{/snippet}
+
+{#snippet dangerVariant()}
+	<ColorSwatch color="#ef4444" />
+{/snippet}
+
+{#snippet successVariant()}
+	<ColorSwatch color="#10b981" />
+{/snippet}
+
+{#snippet warningVariant()}
+	<ColorSwatch color="#f59e0b" />
+{/snippet}
+
+{#snippet smallVariant()}
+	<ColorSwatch size="sm" color="#3b82f6" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<ColorSwatch size="md" color="#3b82f6" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<ColorSwatch size="lg" color="#3b82f6" />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Colores</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 4)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(4)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Paleta de Colores</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="flex gap-4 items-center">
+					<div class="flex flex-col items-center gap-2">
+						<ColorSwatch color="#3b82f6" />
+						<Text class="text-xs">Primary</Text>
+					</div>
+					<div class="flex flex-col items-center gap-2">
+						<ColorSwatch color="#ef4444" />
+						<Text class="text-xs">Danger</Text>
+					</div>
+					<div class="flex flex-col items-center gap-2">
+						<ColorSwatch color="#10b981" />
+						<Text class="text-xs">Success</Text>
+					</div>
+					<div class="flex flex-col items-center gap-2">
+						<ColorSwatch color="#f59e0b" />
+						<Text class="text-xs">Warning</Text>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

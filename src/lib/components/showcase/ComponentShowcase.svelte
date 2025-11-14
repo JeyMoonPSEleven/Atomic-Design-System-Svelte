@@ -32,34 +32,6 @@
 		class: customClass
 	}: Props = $props();
 
-	{#snippet previewTab()}
-		{@render preview()}
-	{/snippet}
-
-	{#snippet codeTab()}
-		{#if code}
-			<CodeBlock {code} />
-		{:else}
-			<Text variant="muted">No hay código disponible para este componente.</Text>
-		{/if}
-	{/snippet}
-
-	{#snippet propsTab()}
-		{#if props.length > 0}
-			<PropsTable {props} />
-		{:else}
-			<Text variant="muted">Este componente no tiene props documentadas.</Text>
-		{/if}
-	{/snippet}
-
-	{#snippet examplesTab()}
-		{#if examples}
-			{@render examples()}
-		{:else}
-			<Text variant="muted">No hay ejemplos disponibles para este componente.</Text>
-		{/if}
-	{/snippet}
-
 	const tabs = $derived([
 		{ label: 'Preview', content: previewTab },
 		...(code ? [{ label: 'Code', content: codeTab }] : []),
@@ -67,6 +39,34 @@
 		...(examples ? [{ label: 'Examples', content: examplesTab }] : [])
 	]);
 </script>
+
+{#snippet previewTab()}
+	{@render preview()}
+{/snippet}
+
+{#snippet codeTab()}
+	{#if code}
+		<CodeBlock {code} />
+	{:else}
+		<Text variant="muted">No hay código disponible para este componente.</Text>
+	{/if}
+{/snippet}
+
+{#snippet propsTab()}
+	{#if props.length > 0}
+		<PropsTable {props} />
+	{:else}
+		<Text variant="muted">Este componente no tiene props documentadas.</Text>
+	{/if}
+{/snippet}
+
+{#snippet examplesTab()}
+	{#if examples}
+		{@render examples()}
+	{:else}
+		<Text variant="muted">No hay ejemplos disponibles para este componente.</Text>
+	{/if}
+{/snippet}
 
 <div class="space-y-6 {customClass}">
 	<!-- Header -->

@@ -72,34 +72,6 @@
 		}
 	];
 
-	{#snippet progress25()}
-		<Progress value={25} />
-	{/snippet}
-
-	{#snippet progress50()}
-		<Progress value={50} />
-	{/snippet}
-
-	{#snippet progress75()}
-		<Progress value={75} />
-	{/snippet}
-
-	{#snippet progress100()}
-		<Progress value={100} />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Progress size="sm" value={50} />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Progress size="md" value={50} />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Progress size="lg" value={50} />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: progress25 },
 		{ ...variants[1], component: progress50 },
@@ -110,47 +82,9 @@
 		{ ...variants[6], component: largeVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Valores</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 4)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(4)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Progreso de Carga</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
-					<div>
-						<div class="flex justify-between mb-1">
-							<span class="text-sm text-text-default">Descargando...</span>
-							<span class="text-sm text-text-muted">65%</span>
-						</div>
-						<Progress value={65} />
-					</div>
-					<div>
-						<div class="flex justify-between mb-1">
-							<span class="text-sm text-text-default">Procesando...</span>
-							<span class="text-sm text-text-muted">30%</span>
-						</div>
-						<Progress value={30} />
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Progress } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Progress value={25} />
 <Progress value={50} />
@@ -161,6 +95,72 @@
 <Progress size="md" value={50} />
 <Progress size="lg" value={50} />`;
 </script>
+
+{#snippet progress25()}
+	<Progress value={25} />
+{/snippet}
+
+{#snippet progress50()}
+	<Progress value={50} />
+{/snippet}
+
+{#snippet progress75()}
+	<Progress value={75} />
+{/snippet}
+
+{#snippet progress100()}
+	<Progress value={100} />
+{/snippet}
+
+{#snippet smallVariant()}
+	<Progress size="sm" value={50} />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Progress size="md" value={50} />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Progress size="lg" value={50} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Valores</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 4)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(4)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Progreso de Carga</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
+				<div>
+					<div class="flex justify-between mb-1">
+						<span class="text-sm text-text-default">Descargando...</span>
+						<span class="text-sm text-text-muted">65%</span>
+					</div>
+					<Progress value={65} />
+				</div>
+				<div>
+					<div class="flex justify-between mb-1">
+						<span class="text-sm text-text-default">Procesando...</span>
+						<span class="text-sm text-text-muted">30%</span>
+					</div>
+					<Progress value={30} />
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

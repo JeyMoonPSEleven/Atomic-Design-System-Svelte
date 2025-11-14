@@ -71,22 +71,6 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Link href="/">Link interno</Link>
-	{/snippet}
-
-	{#snippet mutedVariant()}
-		<Link variant="muted" href="/">Link muted</Link>
-	{/snippet}
-
-	{#snippet dangerVariant()}
-		<Link variant="danger" href="/">Link danger</Link>
-	{/snippet}
-
-	{#snippet externalVariant()}
-		<Link href="https://svelte.dev" target="_blank" rel="noopener noreferrer">Link externo</Link>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: mutedVariant },
@@ -94,37 +78,9 @@
 		{ ...variants[3], component: externalVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Navegación</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-2">
-					<Link href="/">Inicio</Link>
-					<br />
-					<Link href="/showcase">Showcase</Link>
-					<br />
-					<Link variant="muted" href="/docs">Documentación</Link>
-					<br />
-					<Link href="https://svelte.dev" target="_blank" rel="noopener noreferrer">
-						Svelte (externo)
-					</Link>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Link } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Link href="/">Link interno</Link>
 <Link variant="muted" href="/">Link muted</Link>
@@ -134,6 +90,50 @@
   Link externo
 </Link>`;
 </script>
+
+{#snippet defaultVariant()}
+	<Link href="/">Link interno</Link>
+{/snippet}
+
+{#snippet mutedVariant()}
+	<Link variant="muted" href="/">Link muted</Link>
+{/snippet}
+
+{#snippet dangerVariant()}
+	<Link variant="danger" href="/">Link danger</Link>
+{/snippet}
+
+{#snippet externalVariant()}
+	<Link href="https://svelte.dev" target="_blank" rel="noopener noreferrer">Link externo</Link>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Navegación</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-2">
+				<Link href="/">Inicio</Link>
+				<br />
+				<Link href="/showcase">Showcase</Link>
+				<br />
+				<Link variant="muted" href="/docs">Documentación</Link>
+				<br />
+				<Link href="https://svelte.dev" target="_blank" rel="noopener noreferrer">
+					Svelte (externo)
+				</Link>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

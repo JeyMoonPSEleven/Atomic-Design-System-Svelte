@@ -81,30 +81,6 @@
 		}
 	];
 
-	{#snippet textSmallVariant()}
-		<Skeleton variant="text" size="sm" width="w-32" />
-	{/snippet}
-
-	{#snippet textMediumVariant()}
-		<Skeleton variant="text" size="md" width="w-48" />
-	{/snippet}
-
-	{#snippet textLargeVariant()}
-		<Skeleton variant="text" size="lg" width="w-64" />
-	{/snippet}
-
-	{#snippet circularVariant()}
-		<Skeleton variant="circular" size="lg" width="w-12" height="h-12" />
-	{/snippet}
-
-	{#snippet rectangularVariant()}
-		<Skeleton variant="rectangular" size="md" width="w-32" height="h-20" />
-	{/snippet}
-
-	{#snippet roundedVariant()}
-		<Skeleton variant="rounded" size="lg" width="w-48" height="h-24" />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: textSmallVariant },
 		{ ...variants[1], component: textMediumVariant },
@@ -114,32 +90,9 @@
 		{ ...variants[5], component: roundedVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Card con Skeleton</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<Skeleton variant="rectangular" width="w-full" height="h-48" />
-					<Skeleton variant="text" size="md" width="w-3/4" class="mt-4" />
-					<Skeleton variant="text" size="sm" width="w-full" class="mt-2" />
-					<Skeleton variant="text" size="sm" width="w-5/6" class="mt-2" />
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Skeleton } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Skeleton variant="text" size="sm" width="w-32" />
 <Skeleton variant="text" size="md" width="w-48" />
@@ -149,6 +102,53 @@
 <Skeleton variant="rectangular" size="md" width="w-32" height="h-20" />
 <Skeleton variant="rounded" size="lg" width="w-48" height="h-24" />`;
 </script>
+
+{#snippet textSmallVariant()}
+	<Skeleton variant="text" size="sm" width="w-32" />
+{/snippet}
+
+{#snippet textMediumVariant()}
+	<Skeleton variant="text" size="md" width="w-48" />
+{/snippet}
+
+{#snippet textLargeVariant()}
+	<Skeleton variant="text" size="lg" width="w-64" />
+{/snippet}
+
+{#snippet circularVariant()}
+	<Skeleton variant="circular" size="lg" width="w-12" height="h-12" />
+{/snippet}
+
+{#snippet rectangularVariant()}
+	<Skeleton variant="rectangular" size="md" width="w-32" height="h-20" />
+{/snippet}
+
+{#snippet roundedVariant()}
+	<Skeleton variant="rounded" size="lg" width="w-48" height="h-24" />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Card con Skeleton</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<Skeleton variant="rectangular" width="w-full" height="h-48" />
+				<Skeleton variant="text" size="md" width="w-3/4" class="mt-4" />
+				<Skeleton variant="text" size="sm" width="w-full" class="mt-2" />
+				<Skeleton variant="text" size="sm" width="w-5/6" class="mt-2" />
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

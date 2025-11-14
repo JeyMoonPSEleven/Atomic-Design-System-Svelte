@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { GroupButton } from '$lib/components/02-molecules';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let groupValue1 = $state('');
-	let groupValue2 = $state('center');
+let groupValue1 = $state('');
 
-	const variants = [
+let groupValue2 = $state('center');
+
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -20,7 +21,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'buttons',
 			type: 'ButtonItem[]',
@@ -51,7 +52,27 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
+let value = $state('');
+
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withChangeVariant }
+	];
+
+	const codeExample = `<script lang="ts">
+  import { GroupButton } from '$lib/components/02-molecules';
+  
+  let value = $state('');
+<\/script>
+
+<GroupButton buttons={[
+  { label: 'Izquierda', value: 'left' },
+  { label: 'Centro', value: 'center' },
+  { label: 'Derecha', value: 'right' }
+]} bind:value={value} />`;
+</script>
+
+{#snippet defaultVariant()}
 		<GroupButton buttons={[
 			{ label: 'Izquierda', value: 'left' },
 			{ label: 'Centro', value: 'center' },
@@ -59,7 +80,7 @@
 		]} bind:value={groupValue1} />
 	{/snippet}
 
-	{#snippet withChangeVariant()}
+{#snippet withChangeVariant()}
 		<GroupButton buttons={[
 			{ label: 'Izquierda', value: 'left' },
 			{ label: 'Centro', value: 'center' },
@@ -67,12 +88,7 @@
 		]} bind:value={groupValue2} onchange={(v) => console.log('Seleccionado:', v)} />
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withChangeVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Ejemplos</h3>
@@ -81,7 +97,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Alineación de Texto</h4>
@@ -96,19 +112,6 @@
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { GroupButton } from '$lib/components/02-molecules';
-  
-  let value = $state('');
-</script>
-
-<GroupButton buttons={[
-  { label: 'Izquierda', value: 'left' },
-  { label: 'Centro', value: 'center' },
-  { label: 'Derecha', value: 'right' }
-]} bind:value={value} />`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -129,4 +132,3 @@
 		{examples}
 	/>
 </div>
-

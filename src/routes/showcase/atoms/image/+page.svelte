@@ -74,53 +74,6 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Image
-			src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
-			alt="Paisaje"
-		/>
-	{/snippet}
-
-	{#snippet roundedNoneVariant()}
-		<Image
-			rounded="none"
-			src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
-			alt="Paisaje"
-		/>
-	{/snippet}
-
-	{#snippet roundedSmallVariant()}
-		<Image
-			rounded="sm"
-			src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
-			alt="Paisaje"
-		/>
-	{/snippet}
-
-	{#snippet roundedMediumVariant()}
-		<Image
-			rounded="md"
-			src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
-			alt="Paisaje"
-		/>
-	{/snippet}
-
-	{#snippet roundedLargeVariant()}
-		<Image
-			rounded="lg"
-			src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
-			alt="Paisaje"
-		/>
-	{/snippet}
-
-	{#snippet roundedFullVariant()}
-		<Image
-			rounded="full"
-			src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
-			alt="Paisaje"
-		/>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: roundedNoneVariant },
@@ -130,33 +83,9 @@
 		{ ...variants[5], component: roundedFullVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Redondeo</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Galería de Imágenes</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<Image
-						src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
-						alt="Paisaje"
-						class="rounded-lg w-full"
-					/>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Image } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Image src="https://example.com/image.jpg" alt="Descripción" />
 
@@ -166,6 +95,77 @@
 <Image rounded="lg" src="..." alt="..." />
 <Image rounded="full" src="..." alt="..." />`;
 </script>
+
+{#snippet defaultVariant()}
+	<Image
+		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
+		alt="Paisaje"
+	/>
+{/snippet}
+
+{#snippet roundedNoneVariant()}
+	<Image
+		rounded="none"
+		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
+		alt="Paisaje"
+	/>
+{/snippet}
+
+{#snippet roundedSmallVariant()}
+	<Image
+		rounded="sm"
+		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
+		alt="Paisaje"
+	/>
+{/snippet}
+
+{#snippet roundedMediumVariant()}
+	<Image
+		rounded="md"
+		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
+		alt="Paisaje"
+	/>
+{/snippet}
+
+{#snippet roundedLargeVariant()}
+	<Image
+		rounded="lg"
+		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
+		alt="Paisaje"
+	/>
+{/snippet}
+
+{#snippet roundedFullVariant()}
+	<Image
+		rounded="full"
+		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200"
+		alt="Paisaje"
+	/>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Redondeo</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Galería de Imágenes</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<Image
+					src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
+					alt="Paisaje"
+					class="rounded-lg w-full"
+				/>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

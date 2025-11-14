@@ -1,21 +1,17 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Sidebar } from '$lib/components/03-organisms';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	{#snippet sidebarLogo()}
-		<Text class="font-bold text-lg">Menú</Text>
-	{/snippet}
-
-	const sidebarItems = [
+const sidebarItems = [
 		{ label: 'Item 1', href: '#' },
 		{ label: 'Item 2', href: '#' },
 		{ label: 'Divider', divider: true },
 		{ label: 'Item 3', href: '#' }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -28,7 +24,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'items',
 			type: 'MenuItem[]',
@@ -52,38 +48,10 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Sidebar items={sidebarItems} />
-	{/snippet}
-
-	{#snippet logoVariant()}
-		<Sidebar logo={sidebarLogo} items={sidebarItems} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: logoVariant }
 	];
-
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Sidebar Completo</h4>
-				<div class="border border-border-default rounded-lg max-w-xs bg-surface-card overflow-hidden">
-					<Sidebar logo={sidebarLogo} items={sidebarItems} />
-				</div>
-			</div>
-		</div>
-	{/snippet}
 
 	const codeExample = `<script lang="ts">
   import { Sidebar } from '$lib/components/03-organisms';
@@ -92,7 +60,7 @@
   {#snippet logo()}
     <Text class="font-bold text-lg">Menú</Text>
   {/snippet}
-</script>
+<\/script>
 
 <Sidebar items={[
   { label: 'Item 1', href: '#' },
@@ -103,6 +71,39 @@
 
 <Sidebar logo={logo} items={items} />`;
 </script>
+
+{#snippet sidebarLogo()}
+	<Text class="font-bold text-lg">Menú</Text>
+{/snippet}
+
+{#snippet defaultVariant()}
+	<Sidebar items={sidebarItems} />
+{/snippet}
+
+{#snippet logoVariant()}
+	<Sidebar logo={sidebarLogo} items={sidebarItems} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Sidebar Completo</h4>
+			<div class="border border-border-default rounded-lg max-w-xs bg-surface-card overflow-hidden">
+				<Sidebar logo={sidebarLogo} items={sidebarItems} />
+			</div>
+		</div>
+	</div>
+{/snippet}
+
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -123,4 +124,3 @@
 		{examples}
 	/>
 </div>
-

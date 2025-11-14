@@ -50,22 +50,6 @@
 		}
 	];
 
-	{#snippet smallVariant()}
-		<Logo size="sm">AD</Logo>
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Logo size="md">AD</Logo>
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Logo size="lg">AD</Logo>
-	{/snippet}
-
-	{#snippet xlVariant()}
-		<Logo size="xl">AD</Logo>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: smallVariant },
 		{ ...variants[1], component: mediumVariant },
@@ -73,38 +57,54 @@
 		{ ...variants[3], component: xlVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Uso en Header</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="flex items-center gap-4">
-						<Logo size="md">AD</Logo>
-						<span class="text-text-default">Atomic Design System</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Logo } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Logo size="sm">AD</Logo>
 <Logo size="md">AD</Logo>
 <Logo size="lg">AD</Logo>
 <Logo size="xl">AD</Logo>`;
 </script>
+
+{#snippet smallVariant()}
+	<Logo size="sm">AD</Logo>
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Logo size="md">AD</Logo>
+{/snippet}
+
+{#snippet largeVariant()}
+	<Logo size="lg">AD</Logo>
+{/snippet}
+
+{#snippet xlVariant()}
+	<Logo size="xl">AD</Logo>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Uso en Header</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="flex items-center gap-4">
+					<Logo size="md">AD</Logo>
+					<span class="text-text-default">Atomic Design System</span>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

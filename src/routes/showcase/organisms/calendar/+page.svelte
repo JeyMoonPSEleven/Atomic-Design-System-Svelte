@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Calendar } from '$lib/components/03-organisms';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let selectedDate = $state<Date | undefined>(undefined);
+let selectedDate = $state<Date | undefined>(undefined);
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -19,7 +19,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'selectedDate',
 			type: 'Date',
@@ -43,20 +43,30 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Calendar onselect={(date) => console.log('Fecha:', date)} />
-	{/snippet}
-
-	{#snippet withSelectedVariant()}
-		<Calendar selectedDate={new Date()} onselect={(date) => console.log('Fecha:', date)} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withSelectedVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Calendar } from '$lib/components/03-organisms';
+  
+  let selectedDate = $state<Date | null>(null);
+<\/script>
+
+<Calendar onselect={(date) => {
+  selectedDate = date;
+  console.log('Fecha seleccionada:', date);
+}} />
+
+<Calendar selectedDate={new Date()} onselect={(date) => console.log('Fecha:', date)} />`;
+</script>
+
+{#snippet withSelectedVariant()}
+		<Calendar selectedDate={new Date()} onselect={(date) => console.log('Fecha:', date)} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -65,7 +75,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Selector de Fecha</h4>
@@ -79,19 +89,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Calendar } from '$lib/components/03-organisms';
-  
-  let selectedDate: Date | undefined;
-</script>
-
-<Calendar onselect={(date) => {
-  selectedDate = date;
-  console.log('Fecha seleccionada:', date);
-}} />
-
-<Calendar selectedDate={new Date()} onselect={(date) => ...} />`;
-</script>
+{#snippet defaultVariant()}
+	<Calendar onselect={(date) => console.log('Fecha:', date)} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -112,4 +112,3 @@
 		{examples}
 	/>
 </div>
-

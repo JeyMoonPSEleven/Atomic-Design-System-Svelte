@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { UserProfile } from '$lib/components/03-organisms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const userActions = [
+const userActions = [
 		{ label: 'Editar', onclick: () => console.log('Editar') },
 		{ label: 'Eliminar', onclick: () => console.log('Eliminar') }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'With Avatar Image',
 			component: () => {},
@@ -26,7 +26,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'name',
 			type: 'string',
@@ -71,64 +71,74 @@
 		}
 	];
 
-	{#snippet withAvatarVariant()}
-		<UserProfile
-			name="Juan Pérez"
-			email="juan@example.com"
-			avatar="https://i.pravatar.cc/150?img=1"
-		/>
-	{/snippet}
-
-	{#snippet withInitialsVariant()}
-		<UserProfile name="Juan Pérez" initials="JP" />
-	{/snippet}
-
-	{#snippet withActionsVariant()}
-		<UserProfile name="Juan Pérez" email="juan@example.com" initials="JP" actions={userActions} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: withAvatarVariant },
 		{ ...variants[1], component: withInitialsVariant },
 		{ ...variants[2], component: withActionsVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Perfil de Usuario</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<UserProfile
-						name="Juan Pérez"
-						email="juan@example.com"
-						initials="JP"
-						actions={userActions}
-					/>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { UserProfile } from '$lib/components/03-organisms';
+<\/script>
+
+<UserProfile
+  name="Juan Pérez"
+  email="juan@example.com"
+  avatar="https://i.pravatar.cc/150?img=1"
+/>
+
+<UserProfile name="Juan Pérez" initials="JP" />
+
+<UserProfile 
+  name="Juan Pérez" 
+  actions={[
+    { label: 'Editar', onclick: () => {} },
+    { label: 'Eliminar', onclick: () => {} }
+  ]} 
+/>`;
 </script>
 
-<UserProfile name="Juan Pérez" email="juan@example.com" avatar="url" />
-<UserProfile name="Juan Pérez" initials="JP" />
-<UserProfile name="Juan Pérez" actions={[
-  { label: 'Editar', onclick: () => {} },
-  { label: 'Eliminar', onclick: () => {} }
-]} />`;
-</script>
+{#snippet withAvatarVariant()}
+	<UserProfile
+		name="Juan Pérez"
+		email="juan@example.com"
+		avatar="https://i.pravatar.cc/150?img=1"
+	/>
+{/snippet}
+
+{#snippet withInitialsVariant()}
+	<UserProfile name="Juan Pérez" initials="JP" />
+{/snippet}
+
+{#snippet withActionsVariant()}
+	<UserProfile name="Juan Pérez" email="juan@example.com" initials="JP" actions={userActions} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Perfil de Usuario</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<UserProfile
+					name="Juan Pérez"
+					email="juan@example.com"
+					initials="JP"
+					actions={userActions}
+				/>
+			</div>
+		</div>
+	</div>
+{/snippet}
+
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -149,4 +159,3 @@
 		{examples}
 	/>
 </div>
-

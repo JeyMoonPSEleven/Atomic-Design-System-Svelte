@@ -85,11 +85,20 @@
 		}
 	];
 
+	const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: errorVariant },
+		{ ...variants[2], component: smallVariant },
+		{ ...variants[3], component: mediumVariant },
+		{ ...variants[4], component: largeVariant },
+		{ ...variants[5], component: withValueVariant }
+	];
+
 	const codeExample = `<script lang="ts">
   import { Input } from '$lib/components/01-atoms';
   
   let value = $state('');
-</script>
+<\/script>
 
 <Input placeholder="Escribe algo..." />
 
@@ -125,17 +134,6 @@
 {#snippet withValueVariant()}
 	<Input bindValue={inputValue1} placeholder="Con valor" />
 {/snippet}
-
-<script>
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: errorVariant },
-		{ ...variants[2], component: smallVariant },
-		{ ...variants[3], component: mediumVariant },
-		{ ...variants[4], component: largeVariant },
-		{ ...variants[5], component: withValueVariant }
-	];
-</script>
 
 {#snippet preview()}
 	<div class="space-y-8">

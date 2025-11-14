@@ -72,30 +72,6 @@
 		}
 	];
 
-	{#snippet uncheckedVariant()}
-		<Checkbox />
-	{/snippet}
-
-	{#snippet checkedVariant()}
-		<Checkbox checked={true} />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Checkbox size="sm" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Checkbox size="md" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Checkbox size="lg" />
-	{/snippet}
-
-	{#snippet withBindingVariant()}
-		<Checkbox bind:checked={checked1} />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: uncheckedVariant },
 		{ ...variants[1], component: checkedVariant },
@@ -105,50 +81,11 @@
 		{ ...variants[5], component: withBindingVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(2, 5)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Con Binding</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(5)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Lista de Tareas</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="space-y-3">
-						<label class="flex items-center gap-2">
-							<Checkbox bind:checked={checked2} />
-							<TextAtom>Tarea completada</TextAtom>
-						</label>
-						<label class="flex items-center gap-2">
-							<Checkbox bind:checked={checked3} />
-							<TextAtom>Tarea pendiente</TextAtom>
-						</label>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Checkbox } from '$lib/components/01-atoms';
   
   let checked = $state(false);
-</script>
+<\/script>
 
 <Checkbox />
 <Checkbox checked={true} />
@@ -159,6 +96,69 @@
 
 <Checkbox bind:checked={checked} />`;
 </script>
+
+{#snippet uncheckedVariant()}
+	<Checkbox />
+{/snippet}
+
+{#snippet checkedVariant()}
+	<Checkbox checked={true} />
+{/snippet}
+
+{#snippet smallVariant()}
+	<Checkbox size="sm" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Checkbox size="md" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Checkbox size="lg" />
+{/snippet}
+
+{#snippet withBindingVariant()}
+	<Checkbox bind:checked={checked1} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(2, 5)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Con Binding</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(5)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Lista de Tareas</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="space-y-3">
+					<label class="flex items-center gap-2">
+						<Checkbox bind:checked={checked2} />
+						<TextAtom>Tarea completada</TextAtom>
+					</label>
+					<label class="flex items-center gap-2">
+						<Checkbox bind:checked={checked3} />
+						<TextAtom>Tarea pendiente</TextAtom>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

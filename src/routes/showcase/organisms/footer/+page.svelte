@@ -1,16 +1,10 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Footer } from '$lib/components/03-organisms';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	{#snippet footerContent()}
-		<div class="text-center text-text-muted">
-			<Text>© 2024 Atomic Design System</Text>
-		</div>
-	{/snippet}
-
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -18,7 +12,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'children',
 			type: 'Snippet',
@@ -28,23 +22,45 @@
 		}
 	];
 
-	{#snippet defaultContent()}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant }
+	];
+
+	const codeExample = `<script lang="ts">
+  import { Footer } from '$lib/components/03-organisms';
+  import { Text } from '$lib/components/01-atoms';
+  
+  {#snippet children()}
+    <div class="text-center text-text-muted">
+      <Text>© 2024 Atomic Design System</Text>
+    </div>
+  {/snippet}
+<\/script>
+
+<Footer>
+  {@render children()}
+</Footer>`;
+</script>
+
+{#snippet footerContent()}
 		<div class="text-center text-text-muted">
 			<Text>© 2024 Atomic Design System</Text>
 		</div>
 	{/snippet}
 
-	{#snippet defaultVariant()}
+{#snippet defaultContent()}
+		<div class="text-center text-text-muted">
+			<Text>© 2024 Atomic Design System</Text>
+		</div>
+	{/snippet}
+
+{#snippet defaultVariant()}
 		<Footer>
 			{@render defaultContent()}
 		</Footer>
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Ejemplo</h3>
@@ -53,7 +69,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Footer Completo</h4>
@@ -65,20 +81,6 @@
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { Footer } from '$lib/components/03-organisms';
-  import { Text } from '$lib/components/01-atoms';
-</script>
-
-<Footer>
-  {#snippet children()}
-    <div class="text-center text-text-muted">
-      <Text>© 2024 Atomic Design System</Text>
-    </div>
-  {/snippet}
-</Footer>`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -99,4 +101,3 @@
 		{examples}
 	/>
 </div>
-

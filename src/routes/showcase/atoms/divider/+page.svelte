@@ -60,9 +60,18 @@
 		}
 	];
 
+	const variantsWithComponents = [
+		{ ...variants[0], component: solidVariant },
+		{ ...variants[1], component: dashedVariant },
+		{ ...variants[2], component: dottedVariant },
+		{ ...variants[3], component: smallSpacingVariant },
+		{ ...variants[4], component: mediumSpacingVariant },
+		{ ...variants[5], component: largeSpacingVariant }
+	];
+
 	const codeExample = `<script lang="ts">
   import { Divider, Text } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Text>Texto arriba</Text>
 <Divider />
@@ -124,16 +133,6 @@
 		<Text>Texto abajo</Text>
 	</div>
 {/snippet}
-
-	const variantsWithComponents = [
-		{ ...variants[0], component: solidVariant },
-		{ ...variants[1], component: dashedVariant },
-		{ ...variants[2], component: dottedVariant },
-		{ ...variants[3], component: smallSpacingVariant },
-		{ ...variants[4], component: mediumSpacingVariant },
-		{ ...variants[5], component: largeSpacingVariant }
-	];
-</script>
 
 {#snippet preview()}
 		<div class="space-y-8">

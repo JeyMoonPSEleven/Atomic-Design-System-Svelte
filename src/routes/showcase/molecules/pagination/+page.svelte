@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Pagination } from '$lib/components/02-molecules';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let currentPage1 = $state(1);
-	let currentPage2 = $state(5);
+let currentPage1 = $state(1);
 
-	const variants = [
+let currentPage2 = $state(5);
+
+const variants = [
 		{
 			title: 'Small Set',
 			component: () => {},
@@ -20,7 +21,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'currentPage',
 			type: 'number',
@@ -51,20 +52,31 @@
 		}
 	];
 
-	{#snippet smallSetVariant()}
-		<Pagination currentPage={currentPage1} totalPages={5} onpagechange={(p) => currentPage1 = p} />
-	{/snippet}
+let currentPage = $state(1);
 
-	{#snippet largeSetVariant()}
-		<Pagination currentPage={currentPage2} totalPages={10} onpagechange={(p) => currentPage2 = p} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: smallSetVariant },
 		{ ...variants[1], component: largeSetVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Pagination } from '$lib/components/02-molecules';
+  
+  let currentPage = $state(1);
+<\/script>
+
+<Pagination 
+  currentPage={currentPage} 
+  totalPages={10} 
+  onpagechange={(page) => currentPage = page} 
+/>`;
+</script>
+
+{#snippet largeSetVariant()}
+		<Pagination currentPage={currentPage2} totalPages={10} onpagechange={(p) => currentPage2 = p} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Ejemplos</h3>
@@ -73,7 +85,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Navegación de Páginas</h4>
@@ -85,18 +97,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Pagination } from '$lib/components/02-molecules';
-  
-  let currentPage = $state(1);
-</script>
-
-<Pagination 
-  currentPage={currentPage} 
-  totalPages={10} 
-  onpagechange={(page) => currentPage = page} 
-/>`;
-</script>
+{#snippet smallSetVariant()}
+	<Pagination currentPage={currentPage1} totalPages={5} onpagechange={(p) => currentPage1 = p} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -117,4 +120,3 @@
 		{examples}
 	/>
 </div>
-

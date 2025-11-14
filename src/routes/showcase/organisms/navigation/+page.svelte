@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Navigation } from '$lib/components/03-organisms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const navItems = [
+const navItems = [
 		{ label: 'Inicio', href: '/', active: true },
 		{ label: 'Acerca', href: '/about' },
 		{ label: 'Contacto', href: '/contact' }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -17,7 +17,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'items',
 			type: 'NavItem[]',
@@ -34,15 +34,22 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Navigation items={navItems} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Navigation } from '$lib/components/03-organisms';
+<\/script>
+
+<Navigation items={[
+  { label: 'Inicio', href: '/', active: true },
+  { label: 'Acerca', href: '/about' },
+  { label: 'Contacto', href: '/contact' }
+]} />`;
+</script>
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Ejemplo</h3>
@@ -51,7 +58,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Navegación Principal</h4>
@@ -66,16 +73,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Navigation } from '$lib/components/03-organisms';
-</script>
-
-<Navigation items={[
-  { label: 'Inicio', href: '/', active: true },
-  { label: 'Acerca', href: '/about' },
-  { label: 'Contacto', href: '/contact' }
-]} />`;
-</script>
+{#snippet defaultVariant()}
+	<Navigation items={navItems} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -96,4 +96,3 @@
 		{examples}
 	/>
 </div>
-

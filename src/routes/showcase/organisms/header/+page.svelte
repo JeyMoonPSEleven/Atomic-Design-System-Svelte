@@ -1,34 +1,10 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Header } from '$lib/components/03-organisms';
 	import { Button, Link, Logo } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	{#snippet logo()}
-		<a href="/" class="text-xl font-bold text-text-default">Atomic Design</a>
-	{/snippet}
-
-	{#snippet navigation()}
-		<nav class="flex gap-4">
-			<Link href="/">Inicio</Link>
-			<Link href="/showcase">Showcase</Link>
-			<Link href="/docs">Docs</Link>
-		</nav>
-	{/snippet}
-
-	{#snippet mobileMenuButton()}
-		<Button intent="ghost" size="sm">☰</Button>
-	{/snippet}
-
-	{#snippet mobileNavigationPanel()}
-		<div class="p-4 space-y-2">
-			<Link href="/">Inicio</Link>
-			<Link href="/showcase">Showcase</Link>
-			<Link href="/docs">Docs</Link>
-		</div>
-	{/snippet}
-
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -41,7 +17,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'logo',
 			type: 'Snippet',
@@ -72,53 +48,84 @@
 		}
 	];
 
-	{#snippet defaultLogo()}
-		<a href="/" class="text-xl font-bold text-text-default">Logo</a>
-	{/snippet}
+const variantsWithComponents = [
+		{ ...variants[0], component: defaultVariant },
+		{ ...variants[1], component: withMobileVariant }
+	];
 
-	{#snippet defaultNav()}
-		<nav class="flex gap-4">
-			<Link href="/">Inicio</Link>
-			<Link href="/about">Acerca</Link>
-		</nav>
-	{/snippet}
+	const codeExample = `<script lang="ts">
+  import { Header } from '$lib/components/03-organisms';
+  import { Link } from '$lib/components/01-atoms';
+  
+  {#snippet logo()}
+    <a href="/">Logo</a>
+  {/snippet}
 
-	{#snippet defaultVariant()}
-		<Header logo={defaultLogo} navigation={defaultNav} />
-	{/snippet}
+  {#snippet navigation()}
+    <nav class="flex gap-4">
+      <Link href="/">Inicio</Link>
+      <Link href="/about">Acerca</Link>
+    </nav>
+  {/snippet}
+<\/script>
 
-	{#snippet mobileLogo()}
-		<a href="/" class="text-xl font-bold text-text-default">Logo</a>
-	{/snippet}
+<Header logo={logo} navigation={navigation} />`;
+</script>
 
-	{#snippet mobileNav()}
-		<nav class="flex gap-4">
-			<Link href="/">Inicio</Link>
-			<Link href="/about">Acerca</Link>
-		</nav>
-	{/snippet}
-
-	{#snippet mobileButton()}
+{#snippet mobileMenuButton()}
 		<Button intent="ghost" size="sm">☰</Button>
 	{/snippet}
 
-	{#snippet mobilePanel()}
+{#snippet mobileNavigationPanel()}
+		<div class="p-4 space-y-2">
+			<Link href="/">Inicio</Link>
+			<Link href="/showcase">Showcase</Link>
+			<Link href="/docs">Docs</Link>
+		</div>
+	{/snippet}
+
+{#snippet defaultLogo()}
+		<a href="/" class="text-xl font-bold text-text-default">Logo</a>
+	{/snippet}
+
+{#snippet defaultNav()}
+		<nav class="flex gap-4">
+			<Link href="/">Inicio</Link>
+			<Link href="/about">Acerca</Link>
+		</nav>
+	{/snippet}
+
+{#snippet defaultVariant()}
+		<Header logo={defaultLogo} navigation={defaultNav} />
+	{/snippet}
+
+{#snippet mobileLogo()}
+		<a href="/" class="text-xl font-bold text-text-default">Logo</a>
+	{/snippet}
+
+{#snippet mobileNav()}
+		<nav class="flex gap-4">
+			<Link href="/">Inicio</Link>
+			<Link href="/about">Acerca</Link>
+		</nav>
+	{/snippet}
+
+{#snippet mobileButton()}
+		<Button intent="ghost" size="sm">☰</Button>
+	{/snippet}
+
+{#snippet mobilePanel()}
 		<div class="p-4 space-y-2">
 			<Link href="/">Inicio</Link>
 			<Link href="/about">Acerca</Link>
 		</div>
 	{/snippet}
 
-	{#snippet withMobileVariant()}
+{#snippet withMobileVariant()}
 		<Header logo={mobileLogo} navigation={mobileNav} mobileMenuButton={mobileButton} mobileNavigationPanel={mobilePanel} />
 	{/snippet}
 
-	const variantsWithComponents = [
-		{ ...variants[0], component: defaultVariant },
-		{ ...variants[1], component: withMobileVariant }
-	];
-
-	{#snippet preview()}
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -127,7 +134,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Header Completo</h4>
@@ -138,24 +145,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Header } from '$lib/components/03-organisms';
-  import { Link } from '$lib/components/01-atoms';
-  
-  {#snippet logo()}
-    <a href="/">Logo</a>
-  {/snippet}
-  
-  {#snippet navigation()}
-    <nav class="flex gap-4">
-      <Link href="/">Inicio</Link>
-      <Link href="/about">Acerca</Link>
-    </nav>
-  {/snippet}
-</script>
-
-<Header logo={logo} navigation={navigation} />`;
-</script>
+{#snippet logo()}
+	<a href="/" class="text-xl font-bold text-text-default">Atomic Design</a>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -176,4 +168,3 @@
 		{examples}
 	/>
 </div>
-

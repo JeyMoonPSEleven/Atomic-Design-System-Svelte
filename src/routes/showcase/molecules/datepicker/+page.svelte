@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { DatePicker } from '$lib/components/02-molecules';
 	import { Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let dateValue1 = $state('');
-	let dateValue2 = $state('');
+let dateValue1 = $state('');
 
-	const variants = [
+let dateValue2 = $state('');
+
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -20,7 +21,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'value',
 			type: 'string',
@@ -44,20 +45,33 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<DatePicker bind:value={dateValue1} />
-	{/snippet}
+let date = $state('');
 
-	{#snippet withChangeVariant()}
-		<DatePicker bind:value={dateValue2} onchange={(v) => console.log('Fecha:', v)} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withChangeVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { DatePicker } from '$lib/components/02-molecules';
+  
+  let date = $state('');
+<\/script>
+
+<DatePicker bind:value={date} />
+
+<DatePicker bind:value={date} onchange={(v) => console.log('Fecha:', v)} />`;
+</script>
+
+{#snippet defaultVariant()}
+		<DatePicker bind:value={dateValue1} />
+	{/snippet}
+
+{#snippet withChangeVariant()}
+		<DatePicker bind:value={dateValue2} onchange={(v) => console.log('Fecha:', v)} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Ejemplos</h3>
@@ -66,7 +80,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Selector de Fecha</h4>
@@ -80,17 +94,6 @@
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { DatePicker } from '$lib/components/02-molecules';
-  
-  let date = $state('');
-</script>
-
-<DatePicker bind:value={date} />
-
-<DatePicker bind:value={date} onchange={(v) => console.log('Fecha:', v)} />`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -111,4 +114,3 @@
 		{examples}
 	/>
 </div>
-

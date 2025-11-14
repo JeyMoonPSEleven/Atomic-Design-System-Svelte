@@ -65,30 +65,6 @@
 		}
 	];
 
-	{#snippet uncheckedVariant()}
-		<Switch />
-	{/snippet}
-
-	{#snippet checkedVariant()}
-		<Switch checked={true} />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Switch size="sm" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Switch size="md" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Switch size="lg" />
-	{/snippet}
-
-	{#snippet withBindingVariant()}
-		<Switch bind:checked={switch1} />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: uncheckedVariant },
 		{ ...variants[1], component: checkedVariant },
@@ -98,50 +74,11 @@
 		{ ...variants[5], component: withBindingVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(2, 5)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Con Binding</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(5)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Configuración de Notificaciones</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="space-y-4">
-						<div class="flex items-center justify-between">
-							<Text>Notificaciones por email</Text>
-							<Switch bind:checked={switch2} />
-						</div>
-						<div class="flex items-center justify-between">
-							<Text>Notificaciones push</Text>
-							<Switch bind:checked={switch3} />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Switch } from '$lib/components/01-atoms';
   
   let checked = $state(false);
-</script>
+<\/script>
 
 <Switch />
 <Switch checked={true} />
@@ -152,6 +89,69 @@
 
 <Switch bind:checked={checked} />`;
 </script>
+
+{#snippet uncheckedVariant()}
+	<Switch />
+{/snippet}
+
+{#snippet checkedVariant()}
+	<Switch checked={true} />
+{/snippet}
+
+{#snippet smallVariant()}
+	<Switch size="sm" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Switch size="md" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Switch size="lg" />
+{/snippet}
+
+{#snippet withBindingVariant()}
+	<Switch bind:checked={switch1} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 2)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(2, 5)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Con Binding</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(5)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Configuración de Notificaciones</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="space-y-4">
+					<div class="flex items-center justify-between">
+						<Text>Notificaciones por email</Text>
+						<Switch bind:checked={switch2} />
+					</div>
+					<div class="flex items-center justify-between">
+						<Text>Notificaciones push</Text>
+						<Switch bind:checked={switch3} />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

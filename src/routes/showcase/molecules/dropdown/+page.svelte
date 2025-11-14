@@ -1,25 +1,17 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Dropdown } from '$lib/components/02-molecules';
 	import { Button } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	{#snippet dropdownTrigger1()}
-		<Button>Menú Dropdown</Button>
-	{/snippet}
-
-	{#snippet dropdownTrigger2()}
-		<Button intent="secondary">Opciones</Button>
-	{/snippet}
-
-	const dropdownItems = [
+const dropdownItems = [
 		{ label: 'Opción 1', href: '#' },
 		{ label: 'Opción 2', onclick: () => console.log('Opción 2') },
 		{ label: 'Divider', divider: true },
 		{ label: 'Opción 3', href: '#' }
 	];
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -32,7 +24,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'trigger',
 			type: 'Snippet',
@@ -63,54 +55,10 @@
 		}
 	];
 
-	{#snippet trigger1()}
-		<Button>Menú Dropdown</Button>
-	{/snippet}
-
-	{#snippet defaultVariant()}
-		<Dropdown trigger={trigger1} items={dropdownItems} />
-	{/snippet}
-
-	{#snippet trigger2()}
-		<Button intent="secondary">Opciones</Button>
-	{/snippet}
-
-	{#snippet rightVariant()}
-		<Dropdown position="right" trigger={trigger2} items={dropdownItems} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: rightVariant }
 	];
-
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Posiciones</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Menú de Acciones</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					{#snippet actionsTrigger()}
-						<Button>Acciones</Button>
-					{/snippet}
-					<Dropdown trigger={actionsTrigger} items={[
-						{ label: 'Editar', onclick: () => console.log('Editar') },
-						{ label: 'Duplicar', onclick: () => console.log('Duplicar') },
-						{ label: 'Divider', divider: true },
-						{ label: 'Eliminar', onclick: () => console.log('Eliminar') }
-					]} />
-				</div>
-			</div>
-		</div>
-	{/snippet}
 
 	const codeExample = `<script lang="ts">
   import { Dropdown } from '$lib/components/02-molecules';
@@ -119,7 +67,7 @@
   {#snippet trigger()}
     <Button>Menú Dropdown</Button>
   {/snippet}
-</script>
+<\/script>
 
 <Dropdown trigger={trigger} items={[
   { label: 'Opción 1', href: '#' },
@@ -128,6 +76,53 @@
   { label: 'Opción 3', href: '#' }
 ]} />`;
 </script>
+
+{#snippet dropdownTrigger1()}
+		<Button>Menú Dropdown</Button>
+	{/snippet}
+
+{#snippet dropdownTrigger2()}
+		<Button intent="secondary">Opciones</Button>
+	{/snippet}
+
+{#snippet trigger1()}
+		<Button>Menú Dropdown</Button>
+	{/snippet}
+
+{#snippet defaultVariant()}
+		<Dropdown trigger={trigger1} items={dropdownItems} />
+	{/snippet}
+
+{#snippet trigger2()}
+		<Button intent="secondary">Opciones</Button>
+	{/snippet}
+
+{#snippet rightVariant()}
+		<Dropdown position="right" trigger={trigger2} items={dropdownItems} />
+	{/snippet}
+
+{#snippet preview()}
+		<div class="space-y-8">
+			<section>
+				<h3 class="text-lg font-semibold mb-4 text-text-default">Posiciones</h3>
+				<VariantsGrid variants={variantsWithComponents} />
+			</section>
+		</div>
+	{/snippet}
+
+{#snippet examples()}
+		<div class="space-y-6">
+			<div>
+				<h4 class="font-semibold mb-3 text-text-default">Menú de Acciones</h4>
+				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+					{#snippet actionsTrigger()}
+						<Button>Acciones</Button>
+					{/snippet}
+					<Dropdown trigger={actionsTrigger} items={dropdownItems} />
+				</div>
+			</div>
+		</div>
+	{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -148,4 +143,3 @@
 		{examples}
 	/>
 </div>
-

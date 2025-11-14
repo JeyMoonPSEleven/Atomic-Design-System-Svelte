@@ -76,22 +76,6 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Slider bind:value={sliderValue1} min={0} max={100} />
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Slider size="sm" bind:value={sliderValue2} min={0} max={100} />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Slider size="md" bind:value={sliderValue1} min={0} max={100} />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Slider size="lg" bind:value={sliderValue3} min={0} max={100} />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: smallVariant },
@@ -99,44 +83,11 @@
 		{ ...variants[3], component: largeVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Control de Volumen</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
-					<div>
-						<div class="flex justify-between mb-2">
-							<Text class="text-sm">Volumen</Text>
-							<Text class="text-sm text-text-muted">{sliderValue1}%</Text>
-						</div>
-						<Slider bind:value={sliderValue1} min={0} max={100} />
-					</div>
-					<div>
-						<div class="flex justify-between mb-2">
-							<Text class="text-sm">Brillo</Text>
-							<Text class="text-sm text-text-muted">{sliderValue2}%</Text>
-						</div>
-						<Slider bind:value={sliderValue2} min={0} max={100} />
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Slider } from '$lib/components/01-atoms';
   
   let value = $state(50);
-</script>
+<\/script>
 
 <Slider bind:value={value} min={0} max={100} />
 
@@ -144,6 +95,55 @@
 <Slider size="md" bind:value={value} />
 <Slider size="lg" bind:value={value} />`;
 </script>
+
+{#snippet defaultVariant()}
+	<Slider bind:value={sliderValue1} min={0} max={100} />
+{/snippet}
+
+{#snippet smallVariant()}
+	<Slider size="sm" bind:value={sliderValue2} min={0} max={100} />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Slider size="md" bind:value={sliderValue1} min={0} max={100} />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Slider size="lg" bind:value={sliderValue3} min={0} max={100} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Control de Volumen</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card space-y-4">
+				<div>
+					<div class="flex justify-between mb-2">
+						<Text class="text-sm">Volumen</Text>
+						<Text class="text-sm text-text-muted">{sliderValue1}%</Text>
+					</div>
+					<Slider bind:value={sliderValue1} min={0} max={100} />
+				</div>
+				<div>
+					<div class="flex justify-between mb-2">
+						<Text class="text-sm">Brillo</Text>
+						<Text class="text-sm text-text-muted">{sliderValue2}%</Text>
+					</div>
+					<Slider bind:value={sliderValue2} min={0} max={100} />
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { SearchBar } from '$lib/components/02-molecules';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let searchValue1 = $state('');
-	let searchValue2 = $state('');
+let searchValue1 = $state('');
 
-	const variants = [
+let searchValue2 = $state('');
+
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -24,7 +25,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'value',
 			type: 'string',
@@ -55,25 +56,34 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<SearchBar bind:value={searchValue1} />
-	{/snippet}
+let value = $state('');
 
-	{#snippet withPlaceholderVariant()}
-		<SearchBar placeholder="Buscar componentes..." bind:value={searchValue2} />
-	{/snippet}
-
-	{#snippet withSubmitVariant()}
-		<SearchBar bind:value={searchValue1} onsubmit={(v) => console.log('Búsqueda:', v)} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withPlaceholderVariant },
 		{ ...variants[2], component: withSubmitVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { SearchBar } from '$lib/components/02-molecules';
+  
+  let value = $state('');
+<\/script>
+
+<SearchBar bind:value={value} />
+<SearchBar placeholder="Buscar..." bind:value={value} />
+<SearchBar bind:value={value} onsubmit={(v) => console.log('Búsqueda:', v)} />`;
+</script>
+
+{#snippet withPlaceholderVariant()}
+		<SearchBar placeholder="Buscar componentes..." bind:value={searchValue2} />
+	{/snippet}
+
+{#snippet withSubmitVariant()}
+		<SearchBar bind:value={searchValue1} onsubmit={(v) => console.log('Búsqueda:', v)} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -82,7 +92,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Barra de Búsqueda</h4>
@@ -97,16 +107,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { SearchBar } from '$lib/components/02-molecules';
-  
-  let value = $state('');
-</script>
-
-<SearchBar bind:value={value} />
-<SearchBar placeholder="Buscar..." bind:value={value} />
-<SearchBar bind:value={value} onsubmit={(v) => console.log('Búsqueda:', v)} />`;
-</script>
+{#snippet defaultVariant()}
+	<SearchBar bind:value={searchValue1} />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -127,4 +130,3 @@
 		{examples}
 	/>
 </div>
-

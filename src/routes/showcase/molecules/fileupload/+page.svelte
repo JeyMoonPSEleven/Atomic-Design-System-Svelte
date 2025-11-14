@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { FileUpload } from '$lib/components/02-molecules';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -21,7 +21,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'accept',
 			type: 'string',
@@ -52,25 +52,36 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<FileUpload />
-	{/snippet}
-
-	{#snippet withAcceptVariant()}
-		<FileUpload accept="image/*" />
-	{/snippet}
-
-	{#snippet multipleVariant()}
-		<FileUpload multiple />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withAcceptVariant },
 		{ ...variants[2], component: multipleVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { FileUpload } from '$lib/components/02-molecules';
+<\/script>
+
+<FileUpload />
+
+<FileUpload accept="image/*" />
+<FileUpload multiple />
+<FileUpload accept=".pdf,.doc" multiple onchange={(files) => console.log(files)} />`;
+</script>
+
+{#snippet defaultVariant()}
+		<FileUpload />
+	{/snippet}
+
+{#snippet withAcceptVariant()}
+		<FileUpload accept="image/*" />
+	{/snippet}
+
+{#snippet multipleVariant()}
+		<FileUpload multiple />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -79,7 +90,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Subida de Archivos</h4>
@@ -96,17 +107,6 @@
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { FileUpload } from '$lib/components/02-molecules';
-</script>
-
-<FileUpload />
-
-<FileUpload accept="image/*" />
-<FileUpload multiple />
-<FileUpload accept=".pdf,.doc" multiple onchange={(files) => console.log(files)} />`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -127,4 +127,3 @@
 		{examples}
 	/>
 </div>
-

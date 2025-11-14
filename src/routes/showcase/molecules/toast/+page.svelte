@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Toast } from '$lib/components/02-molecules';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	let toastVisible = $state(false);
+let toastVisible = $state(false);
 
-	const variants = [
+const variants = [
 		{
 			title: 'Success',
 			component: () => {},
@@ -33,7 +33,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'message',
 			type: 'string',
@@ -64,27 +64,7 @@
 		}
 	];
 
-	{#snippet successVariant()}
-		<Toast message="Toast de éxito" variant="success" />
-	{/snippet}
-
-	{#snippet errorVariant()}
-		<Toast message="Toast de error" variant="error" />
-	{/snippet}
-
-	{#snippet warningVariant()}
-		<Toast message="Toast de advertencia" variant="warning" />
-	{/snippet}
-
-	{#snippet infoVariant()}
-		<Toast message="Toast informativo" variant="info" />
-	{/snippet}
-
-	{#snippet withCloseVariant()}
-		<Toast message="Este es un mensaje toast" onclose={() => toastVisible = false} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: successVariant },
 		{ ...variants[1], component: errorVariant },
 		{ ...variants[2], component: warningVariant },
@@ -92,7 +72,35 @@
 		{ ...variants[4], component: withCloseVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Toast } from '$lib/components/02-molecules';
+<\/script>
+
+<Toast message="Toast de éxito" variant="success" />
+<Toast message="Toast de error" variant="error" />
+<Toast message="Toast de advertencia" variant="warning" />
+<Toast message="Toast informativo" variant="info" />
+
+<Toast message="Mensaje" onclose={() => console.log('Cerrado')} />`;
+</script>
+
+{#snippet errorVariant()}
+		<Toast message="Toast de error" variant="error" />
+	{/snippet}
+
+{#snippet warningVariant()}
+		<Toast message="Toast de advertencia" variant="warning" />
+	{/snippet}
+
+{#snippet infoVariant()}
+		<Toast message="Toast informativo" variant="info" />
+	{/snippet}
+
+{#snippet withCloseVariant()}
+		<Toast message="Este es un mensaje toast" onclose={() => toastVisible = false} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
@@ -101,7 +109,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Notificaciones</h4>
@@ -115,17 +123,9 @@
 		</div>
 	{/snippet}
 
-	const codeExample = `<script lang="ts">
-  import { Toast } from '$lib/components/02-molecules';
-</script>
-
-<Toast message="Toast de éxito" variant="success" />
-<Toast message="Toast de error" variant="error" />
-<Toast message="Toast de advertencia" variant="warning" />
-<Toast message="Toast informativo" variant="info" />
-
-<Toast message="Mensaje" onclose={() => console.log('Cerrado')} />`;
-</script>
+{#snippet successVariant()}
+	<Toast message="Toast de éxito" variant="success" />
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -146,4 +146,3 @@
 		{examples}
 	/>
 </div>
-

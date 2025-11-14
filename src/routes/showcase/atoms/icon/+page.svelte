@@ -57,22 +57,6 @@
 		}
 	];
 
-	{#snippet smallVariant()}
-		<Icon name="heart" size="sm" />
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Icon name="star" size="md" />
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Icon name="user" size="lg" />
-	{/snippet}
-
-	{#snippet xlVariant()}
-		<Icon name="user" size="xl" />
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: smallVariant },
 		{ ...variants[1], component: mediumVariant },
@@ -80,39 +64,55 @@
 		{ ...variants[3], component: xlVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Iconos en Botones</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="flex gap-4">
-						<Icon name="heart" size="sm" />
-						<Icon name="star" size="md" />
-						<Icon name="user" size="lg" />
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Icon } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Icon name="heart" size="sm" />
 <Icon name="star" size="md" />
 <Icon name="user" size="lg" />
 <Icon name="user" size="xl" />`;
 </script>
+
+{#snippet smallVariant()}
+	<Icon name="heart" size="sm" />
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Icon name="star" size="md" />
+{/snippet}
+
+{#snippet largeVariant()}
+	<Icon name="user" size="lg" />
+{/snippet}
+
+{#snippet xlVariant()}
+	<Icon name="user" size="xl" />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Iconos en Botones</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="flex gap-4">
+					<Icon name="heart" size="sm" />
+					<Icon name="star" size="md" />
+					<Icon name="user" size="lg" />
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

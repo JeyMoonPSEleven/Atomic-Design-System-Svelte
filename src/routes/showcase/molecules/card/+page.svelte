@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Card } from '$lib/components/02-molecules';
 	import { Button, Heading, Text } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const variants = [
+const variants = [
 		{
 			title: 'Basic',
 			component: () => {},
@@ -37,7 +37,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'padding',
 			type: "'none' | 'sm' | 'md' | 'lg'",
@@ -75,63 +75,7 @@
 		}
 	];
 
-	{#snippet basicContent()}
-		<Text>Contenido básico de la tarjeta</Text>
-	{/snippet}
-
-	{#snippet headerContent()}
-		<Heading level="h3">Título de la Tarjeta</Heading>
-	{/snippet}
-
-	{#snippet withHeaderContent()}
-		<Text>Contenido con header</Text>
-	{/snippet}
-
-	{#snippet footerContent()}
-		<Button size="sm">Acción</Button>
-	{/snippet}
-
-	{#snippet withFooterContent()}
-		<Text>Contenido con footer</Text>
-	{/snippet}
-
-	{#snippet basicVariant()}
-		<Card children={basicContent} />
-	{/snippet}
-
-	{#snippet withHeaderVariant()}
-		<Card header={headerContent} children={withHeaderContent} />
-	{/snippet}
-
-	{#snippet withFooterVariant()}
-		<Card footer={footerContent} children={withFooterContent} />
-	{/snippet}
-
-	{#snippet smallPaddingContent()}
-		<Text>Padding pequeño</Text>
-	{/snippet}
-
-	{#snippet smallPaddingVariant()}
-		<Card padding="sm" children={smallPaddingContent} />
-	{/snippet}
-
-	{#snippet mediumPaddingContent()}
-		<Text>Padding medio (default)</Text>
-	{/snippet}
-
-	{#snippet mediumPaddingVariant()}
-		<Card padding="md" children={mediumPaddingContent} />
-	{/snippet}
-
-	{#snippet largePaddingContent()}
-		<Text>Padding grande</Text>
-	{/snippet}
-
-	{#snippet largePaddingVariant()}
-		<Card padding="lg" children={largePaddingContent} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: basicVariant },
 		{ ...variants[1], component: withHeaderVariant },
 		{ ...variants[2], component: withFooterVariant },
@@ -140,7 +84,83 @@
 		{ ...variants[5], component: largePaddingVariant }
 	];
 
-	{#snippet preview()}
+	const codeExample = `<script lang="ts">
+  import { Card } from '$lib/components/02-molecules';
+  import { Button, Heading, Text } from '$lib/components/01-atoms';
+  
+  {#snippet header()}
+    <Heading level="h3">Título</Heading>
+  {/snippet}
+
+  {#snippet content()}
+    <Text>Contenido de la tarjeta</Text>
+  {/snippet}
+
+  {#snippet footer()}
+    <Button size="sm">Acción</Button>
+  {/snippet}
+<\/script>
+
+<Card header={header} children={content} footer={footer} />`;
+</script>
+
+{#snippet basicContent()}
+		<Text>Contenido básico de la tarjeta</Text>
+	{/snippet}
+
+{#snippet headerContent()}
+		<Heading level="h3">Título de la Tarjeta</Heading>
+	{/snippet}
+
+{#snippet withHeaderContent()}
+		<Text>Contenido con header</Text>
+	{/snippet}
+
+{#snippet footerContent()}
+		<Button size="sm">Acción</Button>
+	{/snippet}
+
+{#snippet withFooterContent()}
+		<Text>Contenido con footer</Text>
+	{/snippet}
+
+{#snippet basicVariant()}
+		<Card children={basicContent} />
+	{/snippet}
+
+{#snippet withHeaderVariant()}
+		<Card header={headerContent} children={withHeaderContent} />
+	{/snippet}
+
+{#snippet withFooterVariant()}
+		<Card footer={footerContent} children={withFooterContent} />
+	{/snippet}
+
+{#snippet smallPaddingContent()}
+		<Text>Padding pequeño</Text>
+	{/snippet}
+
+{#snippet smallPaddingVariant()}
+		<Card padding="sm" children={smallPaddingContent} />
+	{/snippet}
+
+{#snippet mediumPaddingContent()}
+		<Text>Padding medio (default)</Text>
+	{/snippet}
+
+{#snippet mediumPaddingVariant()}
+		<Card padding="md" children={mediumPaddingContent} />
+	{/snippet}
+
+{#snippet largePaddingContent()}
+		<Text>Padding grande</Text>
+	{/snippet}
+
+{#snippet largePaddingVariant()}
+		<Card padding="lg" children={largePaddingContent} />
+	{/snippet}
+
+{#snippet preview()}
 		<div class="space-y-8">
 			<section>
 				<h3 class="text-lg font-semibold mb-4 text-text-default">Estructura</h3>
@@ -154,7 +174,7 @@
 		</div>
 	{/snippet}
 
-	{#snippet examples()}
+{#snippet examples()}
 		<div class="space-y-6">
 			<div>
 				<h4 class="font-semibold mb-3 text-text-default">Tarjeta de Producto</h4>
@@ -162,40 +182,23 @@
 					{#snippet productHeader()}
 						<Heading level="h3">Producto</Heading>
 					{/snippet}
+
 					{#snippet productContent()}
 						<Text class="mb-4">Descripción del producto con información detallada.</Text>
 					{/snippet}
+
 					{#snippet productFooter()}
 						<div class="flex gap-2">
 							<Button intent="primary" size="sm">Comprar</Button>
 							<Button intent="secondary" size="sm">Ver más</Button>
 						</div>
 					{/snippet}
+
 					<Card header={productHeader} children={productContent} footer={productFooter} />
 				</div>
 			</div>
 		</div>
 	{/snippet}
-
-	const codeExample = `<script lang="ts">
-  import { Card } from '$lib/components/02-molecules';
-  import { Heading, Text, Button } from '$lib/components/01-atoms';
-  
-  {#snippet header()}
-    <Heading level="h3">Título</Heading>
-  {/snippet}
-  
-  {#snippet content()}
-    <Text>Contenido de la tarjeta</Text>
-  {/snippet}
-  
-  {#snippet footer()}
-    <Button size="sm">Acción</Button>
-  {/snippet}
-</script>
-
-<Card header={header} children={content} footer={footer} />`;
-</script>
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -216,4 +219,3 @@
 		{examples}
 	/>
 </div>
-

@@ -91,38 +91,6 @@
 		}
 	];
 
-	{#snippet primaryVariant()}
-		<Button intent="primary">Click me</Button>
-	{/snippet}
-
-	{#snippet secondaryVariant()}
-		<Button intent="secondary">Click me</Button>
-	{/snippet}
-
-	{#snippet dangerVariant()}
-		<Button intent="danger">Delete</Button>
-	{/snippet}
-
-	{#snippet ghostVariant()}
-		<Button intent="ghost">Cancel</Button>
-	{/snippet}
-
-	{#snippet smallVariant()}
-		<Button size="sm">Small</Button>
-	{/snippet}
-
-	{#snippet mediumVariant()}
-		<Button size="md">Medium</Button>
-	{/snippet}
-
-	{#snippet largeVariant()}
-		<Button size="lg">Large</Button>
-	{/snippet}
-
-	{#snippet disabledVariant()}
-		<Button disabled>Disabled</Button>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: primaryVariant },
 		{ ...variants[1], component: secondaryVariant },
@@ -134,65 +102,9 @@
 		{ ...variants[7], component: disabledVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes de Intent</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 4)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(4, 7)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(7)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Formulario de Login</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="space-y-4">
-						<input
-							type="email"
-							placeholder="Email"
-							class="w-full px-4 py-2 border border-border-default rounded bg-surface-page text-text-default"
-						/>
-						<input
-							type="password"
-							placeholder="Password"
-							class="w-full px-4 py-2 border border-border-default rounded bg-surface-page text-text-default"
-						/>
-						<div class="flex gap-2">
-							<Button intent="primary" class="flex-1">Iniciar sesión</Button>
-							<Button intent="ghost">Cancelar</Button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Acciones de Tabla</h4>
-				<div class="p-6 border border-border-default rounded-lg bg-surface-card">
-					<div class="flex gap-2">
-						<Button intent="primary" size="sm">Editar</Button>
-						<Button intent="secondary" size="sm">Ver</Button>
-						<Button intent="danger" size="sm">Eliminar</Button>
-					</div>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Button } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Button intent="primary" size="md">
   Click me
@@ -206,6 +118,94 @@
   Delete
 </Button>`;
 </script>
+
+{#snippet primaryVariant()}
+	<Button intent="primary">Click me</Button>
+{/snippet}
+
+{#snippet secondaryVariant()}
+	<Button intent="secondary">Click me</Button>
+{/snippet}
+
+{#snippet dangerVariant()}
+	<Button intent="danger">Delete</Button>
+{/snippet}
+
+{#snippet ghostVariant()}
+	<Button intent="ghost">Cancel</Button>
+{/snippet}
+
+{#snippet smallVariant()}
+	<Button size="sm">Small</Button>
+{/snippet}
+
+{#snippet mediumVariant()}
+	<Button size="md">Medium</Button>
+{/snippet}
+
+{#snippet largeVariant()}
+	<Button size="lg">Large</Button>
+{/snippet}
+
+{#snippet disabledVariant()}
+	<Button disabled>Disabled</Button>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes de Intent</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 4)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Tamaños</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(4, 7)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Estados</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(7)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Formulario de Login</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="space-y-4">
+					<input
+						type="email"
+						placeholder="Email"
+						class="w-full px-4 py-2 border border-border-default rounded bg-surface-page text-text-default"
+					/>
+					<input
+						type="password"
+						placeholder="Password"
+						class="w-full px-4 py-2 border border-border-default rounded bg-surface-page text-text-default"
+					/>
+					<div class="flex gap-2">
+						<Button intent="primary" class="flex-1">Iniciar sesión</Button>
+						<Button intent="ghost">Cancelar</Button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Acciones de Tabla</h4>
+			<div class="p-6 border border-border-default rounded-lg bg-surface-card">
+				<div class="flex gap-2">
+					<Button intent="primary" size="sm">Editar</Button>
+					<Button intent="secondary" size="sm">Ver</Button>
+					<Button intent="danger" size="sm">Eliminar</Button>
+				</div>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb

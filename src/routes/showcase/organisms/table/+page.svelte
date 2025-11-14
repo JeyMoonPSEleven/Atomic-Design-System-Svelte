@@ -1,20 +1,17 @@
 <script lang="ts">
-	import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
+import { ComponentShowcase, VariantsGrid } from '$lib/components/showcase';
 	import { Table } from '$lib/components/03-organisms';
 	import { Button } from '$lib/components/01-atoms';
 	import { Breadcrumb } from '$lib/components/02-molecules';
 
-	const tableHeaders = ['Nombre', 'Email', 'Rol'];
-	const tableRows = [
+const tableHeaders = ['Nombre', 'Email', 'Rol'];
+
+const tableRows = [
 		['Juan', 'juan@example.com', 'Admin'],
 		['María', 'maria@example.com', 'Usuario']
 	];
 
-	{#snippet actionButton()}
-		<Button size="sm" intent="secondary">Editar</Button>
-	{/snippet}
-
-	const variants = [
+const variants = [
 		{
 			title: 'Default',
 			component: () => {},
@@ -27,7 +24,7 @@
 		}
 	];
 
-	const props = [
+const props = [
 		{
 			name: 'headers',
 			type: 'string[]',
@@ -51,45 +48,10 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Table headers={tableHeaders} rows={tableRows} />
-	{/snippet}
-
-	{#snippet withSnippetsVariant()}
-		<Table headers={['Nombre', 'Email', 'Acciones']} rows={[
-			['Juan', 'juan@example.com', actionButton],
-			['María', 'maria@example.com', actionButton]
-		]} />
-	{/snippet}
-
-	const variantsWithComponents = [
+const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: withSnippetsVariant }
 	];
-
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
-				<VariantsGrid variants={variantsWithComponents} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Tabla de Usuarios</h4>
-				<div class="max-w-2xl p-6 border border-border-default rounded-lg bg-surface-card">
-					<Table headers={['Nombre', 'Email', 'Rol']} rows={[
-						['Juan', 'juan@example.com', 'Admin'],
-						['María', 'maria@example.com', 'Usuario'],
-						['Pedro', 'pedro@example.com', 'Usuario']
-					]} />
-				</div>
-			</div>
-		</div>
-	{/snippet}
 
 	const codeExample = `<script lang="ts">
   import { Table } from '$lib/components/03-organisms';
@@ -98,7 +60,7 @@
   {#snippet actionButton()}
     <Button size="sm">Editar</Button>
   {/snippet}
-</script>
+<\/script>
 
 <Table headers={['Nombre', 'Email', 'Rol']} rows={[
   ['Juan', 'juan@example.com', 'Admin'],
@@ -110,6 +72,46 @@
   ['María', 'maria@example.com', actionButton]
 ]} />`;
 </script>
+
+{#snippet actionButton()}
+	<Button size="sm">Editar</Button>
+{/snippet}
+
+{#snippet defaultVariant()}
+	<Table headers={tableHeaders} rows={tableRows} />
+{/snippet}
+
+{#snippet withSnippetsVariant()}
+	<Table headers={['Nombre', 'Email', 'Acciones']} rows={[
+		['Juan', 'juan@example.com', actionButton],
+		['María', 'maria@example.com', actionButton]
+	]} />
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Variantes</h3>
+			<VariantsGrid variants={variantsWithComponents} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Tabla de Usuarios</h4>
+			<div class="max-w-2xl p-6 border border-border-default rounded-lg bg-surface-card">
+				<Table headers={['Nombre', 'Email', 'Rol']} rows={[
+					['Juan', 'juan@example.com', 'Admin'],
+					['María', 'maria@example.com', 'Usuario'],
+					['Pedro', 'pedro@example.com', 'Usuario']
+				]} />
+			</div>
+		</div>
+	</div>
+{/snippet}
+
 
 <div class="space-y-6">
 	<Breadcrumb
@@ -130,4 +132,3 @@
 		{examples}
 	/>
 </div>
-

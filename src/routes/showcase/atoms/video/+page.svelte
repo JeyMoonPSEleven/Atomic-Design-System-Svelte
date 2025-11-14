@@ -81,59 +81,6 @@
 		}
 	];
 
-	{#snippet defaultVariant()}
-		<Video
-			src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-			controls
-			class="w-full max-w-xs"
-		/>
-	{/snippet}
-
-	{#snippet roundedNoneVariant()}
-		<Video
-			rounded="none"
-			src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-			controls
-			class="w-full max-w-xs"
-		/>
-	{/snippet}
-
-	{#snippet roundedSmallVariant()}
-		<Video
-			rounded="sm"
-			src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-			controls
-			class="w-full max-w-xs"
-		/>
-	{/snippet}
-
-	{#snippet roundedMediumVariant()}
-		<Video
-			rounded="md"
-			src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-			controls
-			class="w-full max-w-xs"
-		/>
-	{/snippet}
-
-	{#snippet roundedLargeVariant()}
-		<Video
-			rounded="lg"
-			src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-			controls
-			class="w-full max-w-xs"
-		/>
-	{/snippet}
-
-	{#snippet withPosterVariant()}
-		<Video
-			src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-			poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
-			controls
-			class="w-full max-w-xs"
-		/>
-	{/snippet}
-
 	const variantsWithComponents = [
 		{ ...variants[0], component: defaultVariant },
 		{ ...variants[1], component: roundedNoneVariant },
@@ -143,39 +90,9 @@
 		{ ...variants[5], component: withPosterVariant }
 	];
 
-	{#snippet preview()}
-		<div class="space-y-8">
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Redondeo</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(0, 5)} />
-			</section>
-
-			<section>
-				<h3 class="text-lg font-semibold mb-4 text-text-default">Con Poster</h3>
-				<VariantsGrid variants={variantsWithComponents.slice(5)} />
-			</section>
-		</div>
-	{/snippet}
-
-	{#snippet examples()}
-		<div class="space-y-6">
-			<div>
-				<h4 class="font-semibold mb-3 text-text-default">Reproductor de Video</h4>
-				<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
-					<Video
-						src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-						poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
-						controls
-						class="w-full rounded-lg"
-					/>
-				</div>
-			</div>
-		</div>
-	{/snippet}
-
 	const codeExample = `<script lang="ts">
   import { Video } from '$lib/components/01-atoms';
-</script>
+<\/script>
 
 <Video src="https://example.com/video.mp4" controls />
 
@@ -186,6 +103,89 @@
 
 <Video src="..." poster="https://example.com/poster.jpg" controls />`;
 </script>
+
+{#snippet defaultVariant()}
+	<Video
+		src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		controls
+		class="w-full max-w-xs"
+	/>
+{/snippet}
+
+{#snippet roundedNoneVariant()}
+	<Video
+		rounded="none"
+		src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		controls
+		class="w-full max-w-xs"
+	/>
+{/snippet}
+
+{#snippet roundedSmallVariant()}
+	<Video
+		rounded="sm"
+		src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		controls
+		class="w-full max-w-xs"
+	/>
+{/snippet}
+
+{#snippet roundedMediumVariant()}
+	<Video
+		rounded="md"
+		src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		controls
+		class="w-full max-w-xs"
+	/>
+{/snippet}
+
+{#snippet roundedLargeVariant()}
+	<Video
+		rounded="lg"
+		src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		controls
+		class="w-full max-w-xs"
+	/>
+{/snippet}
+
+{#snippet withPosterVariant()}
+	<Video
+		src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+		poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
+		controls
+		class="w-full max-w-xs"
+	/>
+{/snippet}
+
+{#snippet preview()}
+	<div class="space-y-8">
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Redondeo</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(0, 5)} />
+		</section>
+
+		<section>
+			<h3 class="text-lg font-semibold mb-4 text-text-default">Con Poster</h3>
+			<VariantsGrid variants={variantsWithComponents.slice(5)} />
+		</section>
+	</div>
+{/snippet}
+
+{#snippet examples()}
+	<div class="space-y-6">
+		<div>
+			<h4 class="font-semibold mb-3 text-text-default">Reproductor de Video</h4>
+			<div class="max-w-md p-6 border border-border-default rounded-lg bg-surface-card">
+				<Video
+					src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+					poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400"
+					controls
+					class="w-full rounded-lg"
+				/>
+			</div>
+		</div>
+	</div>
+{/snippet}
 
 <div class="space-y-6">
 	<Breadcrumb
